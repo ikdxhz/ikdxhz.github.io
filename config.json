@@ -1,18 +1,6 @@
 {
     "title":"ikdxhz的博客",
-    "subTitle":"document.addEventListener("DOMContentLoaded", function() {
-    fetch('https://api.52vmy.cn/api/wl/yan/yanyu')
-        .then(response => response.json())
-        .then(data => {
-            if (data.code === 200) {
-                // Assuming you have an element with id 'subtitle' in your HTML where you want to display the subtitle
-                document.getElementById('subtitle').innerText = data.data.content;
-            } else {
-                console.error('Failed to fetch the saying:', data.msg);
-            }
-        })
-        .catch(error => console.error('Error fetching the saying:', error));
-});",
+    "subTitle":"无论在什么时候，在这世间的角落都会有一些人逆着光而来，将温暖洒落人间。",
     "avatarUrl":"https://avatars.githubusercontent.com/u/142083737?v=4",
     "GMEEK_VERSION":"last"
 }
