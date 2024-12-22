@@ -1,5 +1,5 @@
 # python库管理器
-## 下载链接
+## 下载链接（EXE）
 
 > 主链接：https://www.123865.com/s/SsSejv-3EYgh
 备用链接https://www.123684.com/s/SsSejv-3EYgh
@@ -15,11 +15,11 @@
 #未经授权或非作者二改或倒卖死女马
 #重要的事情说三遍
 #可以用于学习研究
-import subprocess
-import sys
-import re
-import json
-import requests
+import 不给你看,自己编译，否则下载上面的完整版文件
+import 不给你看，自己学习
+import 不给你看
+import 不给你看
+import 不给你看
 from socket import gethostbyname, gaierror
 import logging
 from datetime import datetime
@@ -73,7 +73,7 @@ def set_pip_source(source):
 def get_current_source():
     for key, value in PIP_SOURCES.items():
         if pip_source == ["-i", value]:
-            return key
+            return key8
     return "default"
 
 def get_pip_command():
@@ -119,7 +119,7 @@ def run_pip_command(pip_command, command, args=[]):
         print(f"\n命令 {' '.join(full_command)} 找不到文件.")
         logging.error(f"命令找不到文件: {' '.join(full_command)}")
         return False
-    except Exception as e:
+    except Exception as e:i
         print(f"发生未知错误: {e}")
         logging.error(f"发生未知错误: {e}")
         return False
