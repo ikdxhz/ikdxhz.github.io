@@ -1,6 +1,13 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>ikdxhz的博客</title><link>https://ikdxhz.github.io</link><description>无论在什么时候，在这世间的角落都会有一些人逆着光而来，将温暖洒落人间。我是ikdxhz，欢迎来到我的博客</description><copyright>ikdxhz的博客</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/142083737?v=4</url><title>avatar</title><link>https://ikdxhz.github.io</link></image><lastBuildDate>Tue, 24 Dec 2024 11:43:35 +0000</lastBuildDate><managingEditor>ikdxhz的博客</managingEditor><ttl>60</ttl><webMaster>ikdxhz的博客</webMaster><item><title>sh文件无限刷屏（简易版）</title><link>https://ikdxhz.github.io/post/sh-wen-jian-wu-xian-shua-ping-%EF%BC%88-jian-yi-ban-%EF%BC%89.html</link><description>大家好&#13;
-![fe8f64f28d22e474050272275aef8b1](https://github.com/user-attachments/assets/54af2af1-898d-4750-b8bd-140194abe787)&#13;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>ikdxhz的博客</title><link>https://ikdxhz.github.io</link><description>无论在什么时候，在这世间的角落都会有一些人逆着光而来，将温暖洒落人间。我是ikdxhz，欢迎来到我的博客</description><copyright>ikdxhz的博客</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/142083737?v=4</url><title>avatar</title><link>https://ikdxhz.github.io</link></image><lastBuildDate>Tue, 24 Dec 2024 11:47:00 +0000</lastBuildDate><managingEditor>ikdxhz的博客</managingEditor><ttl>60</ttl><webMaster>ikdxhz的博客</webMaster><item><title>sh文件无限刷屏（简易版）</title><link>https://ikdxhz.github.io/post/sh-wen-jian-wu-xian-shua-ping-%EF%BC%88-jian-yi-ban-%EF%BC%89.html</link><description>大家好&#13;
+```&#13;
+1. ikdxhz牛逼&#13;
+2. ikdxhz牛逼&#13;
+3. ikdxhz牛逼&#13;
+4. ikdxhz牛逼&#13;
+5. ikdxhz牛逼&#13;
+6. ...&#13;
+```&#13;
 这样的代码怎么做呢？让我一步步教你&#13;
 &#13;
 ## 完整代码&#13;
