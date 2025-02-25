@@ -1,25 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>ikdxhz的博客</title><link>https://ikdxhz.github.io</link><description>所有登峰造极之人最终都会抵达同一个终点，哪怕时代变迁，哪怕所经历的路途千差万别，他们最终都会抵达同样的终点。我是ikdxhz，欢迎来到我的博客</description><copyright>ikdxhz的博客</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/142083737?v=4</url><title>avatar</title><link>https://ikdxhz.github.io</link></image><lastBuildDate>Tue, 25 Feb 2025 12:28:15 +0000</lastBuildDate><managingEditor>ikdxhz的博客</managingEditor><ttl>60</ttl><webMaster>ikdxhz的博客</webMaster><item><title>《一道烧脑的逻辑推论谜题：解开岛屿居民的秘密》</title><link>https://ikdxhz.github.io/post/%E3%80%8A-yi-dao-shao-nao-de-luo-ji-tui-lun-mi-ti-%EF%BC%9A-jie-kai-dao-yu-ju-min-de-mi-mi-%E3%80%8B.html</link><description># 《一道烧脑的逻辑推论谜题：解开岛屿居民的秘密》
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>ikdxhz的博客</title><link>https://ikdxhz.github.io</link><description>所有登峰造极之人最终都会抵达同一个终点，哪怕时代变迁，哪怕所经历的路途千差万别，他们最终都会抵达同样的终点。我是ikdxhz，欢迎来到我的博客</description><copyright>ikdxhz的博客</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/142083737?v=4</url><title>avatar</title><link>https://ikdxhz.github.io</link></image><lastBuildDate>Tue, 25 Feb 2025 12:30:49 +0000</lastBuildDate><managingEditor>ikdxhz的博客</managingEditor><ttl>60</ttl><webMaster>ikdxhz的博客</webMaster><item><title>《一道烧脑的逻辑推论谜题：解开岛屿居民的秘密》</title><link>https://ikdxhz.github.io/post/%E3%80%8A-yi-dao-shao-nao-de-luo-ji-tui-lun-mi-ti-%EF%BC%9A-jie-kai-dao-yu-ju-min-de-mi-mi-%E3%80%8B.html</link><description># 《一道烧脑的逻辑推论谜题：解开岛屿居民的秘密》
 
-在浩瀚无垠的海洋深处，有一座鲜为人知的神秘岛屿。</description><guid isPermaLink="true">https://ikdxhz.github.io/post/%E3%80%8A-yi-dao-shao-nao-de-luo-ji-tui-lun-mi-ti-%EF%BC%9A-jie-kai-dao-yu-ju-min-de-mi-mi-%E3%80%8B.html</guid><pubDate>Tue, 25 Feb 2025 12:27:47 +0000</pubDate></item><item><title>跑步的好处、坏处与科学建议</title><link>https://ikdxhz.github.io/post/pao-bu-de-hao-chu-%E3%80%81-huai-chu-yu-ke-xue-jian-yi.html</link><description># 跑步的好处、坏处与科学建议
-
-## 一、跑步的核心效益解析
-长期规律跑步（每周3-4次，每次45分钟[^101]）可产生多维健康效益：在心血管系统方面，通过提升最大摄氧量（VO₂max[^1][^12][^45] 15-25%[^102]）和降低静息心率（平均降幅10bpm）实现心脏功能优化，波士顿马拉松研究数据显示完赛选手心脏每搏输出量增加18%，《美国心脏病学会杂志》10年追踪证实规律跑者心血管疾病死亡率降低45%；代谢调控方面，8km/h配速下每小时消耗600-750kcal，脂肪供能比可达80%，且运动后24小时基础代谢率维持5-10%增幅，配合碳水:蛋白=3:1的营养策略可使肌糖原合成速率提升300%；神经心理层面，β-内啡肽分泌带来持续4-6小时的愉悦感，斯坦福大学实验证实12周跑步治疗使抑郁量表评分下降41%，同时BDNF浓度提升3倍促进海马体神经新生，这些效益具有剂量效应，建议通过训练日志记录配速、心率和RPE值，每3个月进行跑步经济性评估以优化训练效果。</description><guid isPermaLink="true">https://ikdxhz.github.io/post/pao-bu-de-hao-chu-%E3%80%81-huai-chu-yu-ke-xue-jian-yi.html</guid><pubDate>Sat, 15 Feb 2025 19:29:40 +0000</pubDate></item><item><title>🔒 中国网络合规访问全景指南（2023新版）</title><link>https://ikdxhz.github.io/post/%F0%9F%94%92%20-zhong-guo-wang-luo-he-gui-fang-wen-quan-jing-zhi-nan-%EF%BC%882023-xin-ban-%EF%BC%89.html</link><description># 🌐 网络访问安全与法规科普指南（2023最新版）
-
-## 📌 核心要点速览：网络安全三大红线
-
-⚠️ **重要法律提示** ⚠️ 根据《中华人民共和国网络安全法》《数据安全法》明确规定：  
-🚫 任何单位和个人不得擅自建立或使用VPN进行国际联网（违者最高处15日拘留+1万元罚款）  
-🚫 严禁利用VPN从事危害网络安全活动（包括但不限于访问违法网站、传播不良信息等）  
-🚫 禁止为他人提供违法违规国际联网通道（包括技术支持和设备提供等行为）  
-
----
-
-## 🔍 VPN技术深度解析
-
-### 📜 法律定位说明
-📢 大白话解读：  
-'就像高速公路要有统一收费站，网络国际通道也必须走国家指定的'官方收费站'。</description><guid isPermaLink="true">https://ikdxhz.github.io/post/%F0%9F%94%92%20-zhong-guo-wang-luo-he-gui-fang-wen-quan-jing-zhi-nan-%EF%BC%882023-xin-ban-%EF%BC%89.html</guid><pubDate>Sat, 15 Feb 2025 19:01:50 +0000</pubDate></item><item><title>python库管理器-1.86</title><link>https://ikdxhz.github.io/post/python-ku-guan-li-qi--1.86.html</link><description># Python库管理器 v1.86
+在浩瀚无垠的海洋深处，有一座鲜为人知的神秘岛屿。</description><guid isPermaLink="true">https://ikdxhz.github.io/post/%E3%80%8A-yi-dao-shao-nao-de-luo-ji-tui-lun-mi-ti-%EF%BC%9A-jie-kai-dao-yu-ju-min-de-mi-mi-%E3%80%8B.html</guid><pubDate>Tue, 25 Feb 2025 12:27:47 +0000</pubDate></item><item><title>python库管理器-1.86</title><link>https://ikdxhz.github.io/post/python-ku-guan-li-qi--1.86.html</link><description># Python库管理器 v1.86
 
 ![Python版本要求](https://img.shields.io/badge/Python-3.6.1%2B-blue)
 ![授权协议](https://img.shields.io/badge/License-MIT-green)
