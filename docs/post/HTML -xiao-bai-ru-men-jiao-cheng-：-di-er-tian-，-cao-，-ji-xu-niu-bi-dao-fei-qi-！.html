@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark" data-light-theme="light" lang="zh-CN">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
+    
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/142083737?v=4"><script>
+        let theme = localStorage.getItem("meek_theme") || "light";
+        document.documentElement.setAttribute("data-color-mode", theme);
+    </script>
+<meta name="description" content="操，兄弟，欢迎来到 HTML 学习的第二天！昨天你已经他妈的牛逼了一把，搞定了基本的网页骨架，写出了带标题、段落、图片和链接的页面，爽得不行吧？今天我们继续冲，不整那些高深莫测的玩意儿，保持简单粗暴，带你再学几个 HTML 的核心技能，顺便加点 CSS 基础，让你的网页从“能看”进化到“有点骚气”。">
+<meta property="og:title" content="HTML 小白入门教程：第二天，操，继续牛逼到飞起！">
+<meta property="og:description" content="操，兄弟，欢迎来到 HTML 学习的第二天！昨天你已经他妈的牛逼了一把，搞定了基本的网页骨架，写出了带标题、段落、图片和链接的页面，爽得不行吧？今天我们继续冲，不整那些高深莫测的玩意儿，保持简单粗暴，带你再学几个 HTML 的核心技能，顺便加点 CSS 基础，让你的网页从“能看”进化到“有点骚气”。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://ikdxhz.github.io/post/HTML%20-xiao-bai-ru-men-jiao-cheng-%EF%BC%9A-di-er-tian-%EF%BC%8C-cao-%EF%BC%8C-ji-xu-niu-bi-dao-fei-qi-%EF%BC%81.html">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/142083737?v=4">
+<title>HTML 小白入门教程：第二天，操，继续牛逼到飞起！</title>
+<link href="//unpkg.com/@wooorm/starry-night@2.1.1/style/both.css" rel="stylesheet" />
+
+
+</head>
+<style>
+body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;padding: 45px;font-size: 16px;font-family: sans-serif;line-height: 1.25;}
+#header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;}
+#footer {margin-top:64px; text-align: center;font-size: small;}
+
+</style>
+
+<style>
+.postTitle{margin: auto 0;font-size:40px;font-weight:bold;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right .circle{padding: 14px 16px;margin-right:8px;}
+#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
+#postBody hr{height:2px;}
+#cmButton{height:48px;margin-top:48px;}
+#comments{margin-top:64px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .postTitle{font-size:24px;}
+}
+.copy-feedback {
+    display: none;
+    position: absolute;
+    top: 10px;
+    right: 50px;
+    color: var(--color-fg-on-emphasis);
+    background-color: var(--color-fg-muted);
+    border-radius: 3px;
+    padding: 5px 8px;
+    font-size: 12px;
+}
+</style>
+
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">HTML 小白入门教程：第二天，操，继续牛逼到飞起！</h1>
+<div class="title-right">
+    <a href="https://ikdxhz.github.io" id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+    <a href="https://github.com/ikdxhz/ikdxhz.github.io/issues/4" target="_blank" class="btn btn-invisible circle" title="Issue">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathIssue" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+
+    <a class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody"><p>操，兄弟，欢迎来到 HTML 学习的第二天！昨天你已经他妈的牛逼了一把，搞定了基本的网页骨架，写出了带标题、段落、图片和链接的页面，爽得不行吧？今天我们继续冲，不整那些高深莫测的玩意儿，保持简单粗暴，带你再学几个 HTML 的核心技能，顺便加点 CSS 基础，让你的网页从“能看”进化到“有点骚气”。这篇教程是为零基础的小白量身打造，，干货塞满，脏话照旧，傻逼废话一概没有。还会把可能踩的坑掰开揉碎讲清楚，省得你抓狂。</p>
+<p><strong>今天的目标</strong>：学会列表、表格、简单表单，搞懂怎么用 CSS 给网页加点颜色和样式，写一个更像样的网页。昨天的坑（乱码、图片不显示、链接点不动）我们会再提醒，今天的新坑也会一一列出，确保你不翻车。准备好了？操，干！</p>
+<hr>
+<h2>复习第一天：你已经是个小牛逼了</h2>
+<p>昨天你已经掌握了 HTML 的入门精髓，简单回顾一下，给你点信心：</p>
+<ul>
+<li><strong>HTML 是啥</strong>：网页的骨架，负责内容结构，简单得像吃薯片，一嚼就懂。</li>
+<li><strong>文件结构</strong>：<code class="notranslate">&lt;!DOCTYPE html&gt;</code>、<code class="notranslate">&lt;html&gt;</code>、<code class="notranslate">&lt;head&gt;</code>、<code class="notranslate">&lt;body&gt;</code>，这是网页的固定套路。</li>
+<li><strong>核心标签</strong>：
+<ul>
+<li><code class="notranslate">&lt;h1&gt;</code>-<code class="notranslate">&lt;h6&gt;</code>：标题，从大到小，写网页的头条。</li>
+<li><code class="notranslate">&lt;p&gt;</code>：段落，写大段文字，自动换行。</li>
+<li><code class="notranslate">&lt;a&gt;</code>：链接，点一下跳转到别的网页。</li>
+<li><code class="notranslate">&lt;img&gt;</code>：图片，展示骚气的猫狗图。</li>
+<li><code class="notranslate">&lt;br&gt;</code>：换行，强制断行。</li>
+<li><code class="notranslate">&lt;!-- --&gt;</code>：注释，写备注不显示。</li>
+</ul>
+</li>
+<li><strong>实战成果</strong>：你写了个带标题、段落、链接、图片的网页，打开浏览器看效果，爽得一批。</li>
+<li><strong>踩过的坑</strong>：
+<ul>
+<li>乱码：忘了 <code class="notranslate">&lt;meta charset="UTF-8"&gt;</code>。</li>
+<li>图片不显示：路径错（大小写、文件不在文件夹）。</li>
+<li>链接点不动：<code class="notranslate">href</code> 写错（漏 <code class="notranslate">https://</code>）。</li>
+</ul>
+</li>
+</ul>
+<p>今天我们在这基础上加料，学新标签（列表、表格、表单）和基础 CSS，网页直接起飞。别慌，内容不多，慢慢嚼，保你爽。</p>
+<hr>
+<h2>准备工作：别他妈磨叽，赶紧开干</h2>
+<p>跟第一天一样，你需要的最低配置很简单：</p>
+<ol>
+<li>
+<p><strong>文本编辑器</strong>：</p>
+<ul>
+<li><strong>VS Code</strong>（下载：<code class="notranslate">code.visualstudio.com</code>）是首选，免费，功能牛逼，代码高亮、自动补全、插件丰富。</li>
+<li>装 <strong>Live Server</strong> 插件，写代码实时看效果，爽到爆炸。</li>
+<li><strong>替代选项</strong>：Windows 自带记事本、Mac 的 TextEdit 也能用，但体验烂，建议直接上 VS Code。</li>
+<li><strong>坑提醒</strong>：
+<ul>
+<li>下载 VS Code 时选对系统版本（Windows 64 位、Mac M1 芯片等）。</li>
+<li>Live Server 装好后，确认 VS Code 底部有“Go Live”按钮，没反应可能是端口（默认 5500）被占，换个端口（右键 Live Server 设置）。</li>
+<li>保存文件（Ctrl + S）后 Live Server 才刷新，忘了保存就等着抓狂吧。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>浏览器</strong>：</p>
+<ul>
+<li><strong>Chrome</strong> 最佳，F12 开发者工具能查错、看样式，牛逼得不行。</li>
+<li>Edge、Firefox 也行，但 Chrome 的调试体验最爽。</li>
+<li><strong>坑提醒</strong>：
+<ul>
+<li>老版本浏览器（比如 IE）可能不支持新 HTML/CSS 特性，用最新版 Chrome 避坑。</li>
+<li>网页没更新？可能是浏览器缓存，按 <strong>Ctrl + F5</strong> 强制刷新。</li>
+<li>拖文件到浏览器没效果？确认文件后缀是 <code class="notranslate">.html</code>，别保存成 <code class="notranslate">.txt</code>。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>文件夹</strong>：</p>
+<ul>
+<li>建个新文件夹，比如 <code class="notranslate">my_webpage_day2</code>，放 HTML 文件、图片。</li>
+<li><strong>坑提醒</strong>：
+<ul>
+<li>文件夹别放太深（比如 <code class="notranslate">C:\Users\XXX\XXX\XXX</code>），路径长可能导致图片加载失败。</li>
+<li>文件夹名和文件名别用中文、空格、特殊字符（比如 <code class="notranslate">#</code>、<code class="notranslate">%</code>），否则可能出问题。</li>
+<li>比如 <code class="notranslate">我的网页</code> 改成 <code class="notranslate">my_webpage</code>，<code class="notranslate">dog pic.jpg</code> 改成 <code class="notranslate">dog_pic.jpg</code>。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>图片</strong>：</p>
+<ul>
+<li>准备 1-2 张图片（jpg/png，1MB 以内），比如 <code class="notranslate">dog.jpg</code>、<code class="notranslate">cat.jpg</code>，放文件夹里，后面练 <code class="notranslate">&lt;img&gt;</code> 标签。</li>
+<li><strong>坑提醒</strong>：
+<ul>
+<li>图片文件名大小写敏感（<code class="notranslate">Dog.jpg</code> 和 <code class="notranslate">dog.jpg</code> 不一样）。</li>
+<li>图片太大（比如 10MB）加载慢，压缩到 1MB 以下（用在线工具如 <code class="notranslate">tinypng.com</code>）。</li>
+<li>图片格式用 jpg/png，gif 也行，其他格式（比如 webp）可能不兼容。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>心态</strong>：</p>
+<ul>
+<li>学新东西难免踩坑，别他妈一出错就放弃，跟着教程一步步来，准能搞定。</li>
+<li>遇到问题，Google 或 Baidu 搜，99% 有人踩过同样的坑。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2>新技能 1：列表标签，内容整理得倍儿清晰</h2>
+<p>网页上经常要列东西，比如爱好、导航条、购物清单。HTML 有两种列表标签，简单实用，学了就能装逼。</p>
+<h3>1. 无序列表：<code class="notranslate">&lt;ul&gt;</code> + <code class="notranslate">&lt;li&gt;</code></h3>
+<ul>
+<li>
+<p><strong>用处</strong>：列出一堆没顺序的东西，比如你的爱好、待办事项。</p>
+</li>
+<li>
+<p><strong>格式</strong>：</p>
+<div class="highlight highlight-text-html-basic"><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">ul</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>第一项<span class="pl-kos">&lt;/</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>第二项<span class="pl-kos">&lt;/</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>第三项<span class="pl-kos">&lt;/</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>
+<span class="pl-kos">&lt;/</span><span class="pl-ent">ul</span><span class="pl-kos">&gt;</span></pre></div>
+</li>
+<li>
+<p><strong>效果</strong>：每项前面有小圆点（或方块），自动换行，干净整齐。</p>
+</li>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight highlight-text-html-basic"><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">h2</span><span class="pl-kos">&gt;</span>我的爱好，操，爽爆！<span class="pl-kos">&lt;/</span><span class="pl-ent">h2</span><span class="pl-kos">&gt;</span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">ul</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>刷 B 站，动漫游戏视频看不停<span class="pl-kos">&lt;/</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>打 LOL，排位上分贼刺激<span class="pl-kos">&lt;/</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>吃鸡，落地成盒也开心<span class="pl-kos">&lt;/</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>
+<span class="pl-kos">&lt;/</span><span class="pl-ent">ul</span><span class="pl-kos">&gt;</span></pre></div>
+</li>
+<li>
+<p><strong>效果</strong>：</p>
+<h2>我的爱好，操，爽爆！</h2>
+<ul>
+<li>刷 B 站，动漫游戏视频看不停</li>
+<li>打 LOL，排位上分贼刺激</li>
+<li>吃鸡，落地成盒也开心</li>
+</ul>
+</li>
+<li>
+<p><strong>坑提醒</strong>：</p>
+<ul>
+<li>
+<p><code class="notranslate">&lt;li&gt;</code> 必须放在 <code class="notranslate">&lt;ul&gt;</code> 里，别单独写 <code class="notranslate">&lt;li&gt;</code>，否则浏览器可能渲染乱。</p>
+</li>
+<li>
+<p>忘了闭合 <code class="notranslate">&lt;li&gt;</code>（比如 <code class="notranslate">&lt;li&gt;xxx</code>），排版可能错位。</p>
+</li>
+<li>
+<p>想改小圆点样式（比如换成方块或箭头），得用 CSS，后面会讲。</p>
+</li>
+<li>
+<p>列表嵌套（比如 <code class="notranslate">&lt;ul&gt;</code> 里再放 <code class="notranslate">&lt;ul&gt;</code>）要小心，别搞乱层级，比如：</p>
+<div class="highlight highlight-text-html-basic"><pre class="notranslate"><span class="pl-c">&lt;!-- 错 --&gt;</span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">ul</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>爱好<span class="pl-kos">&lt;</span><span class="pl-ent">ul</span><span class="pl-kos">&gt;</span>xxx<span class="pl-kos">&lt;/</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-ent">ul</span><span class="pl-kos">&gt;</span>
+<span class="pl-kos">&lt;/</span>ul<span class="pl-kos">&gt;</span>
+<span class="pl-c">&lt;!-- 对 --&gt;</span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">ul</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>爱好
+        <span class="pl-kos">&lt;</span><span class="pl-ent">ul</span><span class="pl-kos">&gt;</span>
+            <span class="pl-kos">&lt;</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>xxx<span class="pl-kos">&lt;/</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>
+        <span class="pl-kos">&lt;/</span><span class="pl-ent">ul</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;/</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>
+<span class="pl-kos">&lt;/</span><span class="pl-ent">ul</span><span class="pl-kos">&gt;</span></pre></div>
+</li>
+</ul>
+</li>
+</ul>
+<h3>2. 有序列表：<code class="notranslate">&lt;ol&gt;</code> + <code class="notranslate">&lt;li&gt;</code></h3>
+<ul>
+<li>
+<p><strong>用处</strong>：列出有顺序的东西，比如步骤、排名、计划。</p>
+</li>
+<li>
+<p><strong>格式</strong>：</p>
+<div class="highlight highlight-text-html-basic"><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">ol</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>第一步<span class="pl-kos">&lt;/</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>第二步<span class="pl-kos">&lt;/</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>第三步<span class="pl-kos">&lt;/</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>
+<span class="pl-kos">&lt;/</span><span class="pl-ent">ol</span><span class="pl-kos">&gt;</span></pre></div>
+</li>
+<li>
+<p><strong>效果</strong>：每项前面有数字（1, 2, 3），自动换行，整齐划一。</p>
+</li>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight highlight-text-html-basic"><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">h2</span><span class="pl-kos">&gt;</span>学 HTML 的骚气步骤<span class="pl-kos">&lt;/</span><span class="pl-ent">h2</span><span class="pl-kos">&gt;</span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">ol</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>学会基本标签，操，简单到爆<span class="pl-kos">&lt;/</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>加点 CSS，网页变漂亮<span class="pl-kos">&lt;/</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>搞 JavaScript，网页能动起来<span class="pl-kos">&lt;/</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>
+<span class="pl-kos">&lt;/</span><span class="pl-ent">ol</span><span class="pl-kos">&gt;</span></pre></div>
+</li>
+<li>
+<p><strong>效果</strong>：</p>
+<h2>学 HTML 的骚气步骤</h2>
+<ol>
+<li>学会基本标签，操，简单到爆</li>
+<li>加点 CSS，网页变漂亮</li>
+<li>搞 JavaScript，网页能动起来</li>
+</ol>
+</li>
+<li>
+<p><strong>坑提醒</strong>：</p>
+<ul>
+<li>
+<p><code class="notranslate">&lt;ol&gt;</code> 里只能放 <code class="notranslate">&lt;li&gt;</code>，别塞其他标签（比如 <code class="notranslate">&lt;p&gt;</code>），否则可能报错或渲染乱。</p>
+</li>
+<li>
+<p>想改数字样式（比如用字母 a, b, c 或罗马数字 I, II, III），加 <code class="notranslate">type</code> 属性：</p>
+<div class="highlight highlight-text-html-basic"><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">ol</span> <span class="pl-c1">type</span>="<span class="pl-s">a</span>"<span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>第一项<span class="pl-kos">&lt;/</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>第二项<span class="pl-kos">&lt;/</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>
+<span class="pl-kos">&lt;/</span><span class="pl-ent">ol</span><span class="pl-kos">&gt;</span></pre></div>
+<p>效果：a. 第一项 b. 第二项</p>
+</li>
+<li>
+<p>或者用 CSS 更灵活，后面会讲。</p>
+</li>
+<li>
+<p>忘了闭合 <code class="notranslate">&lt;ol&gt;</code> 或 <code class="notranslate">&lt;li&gt;</code>，浏览器可能自动补全，但代码不规范，容易出问题。</p>
+</li>
+<li>
+<p>嵌套有序列表时，保持层级清晰，别交叉嵌套。</p>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2>新技能 2：表格标签，数据整齐又专业</h2>
+<p>表格用来展示结构化数据，比如成绩单、时间表、产品对比。HTML 的表格标签简单，但得写对，不然容易乱。</p>
+<h3>表格结构：<code class="notranslate">&lt;table&gt;</code>、<code class="notranslate">&lt;tr&gt;</code>、<code class="notranslate">&lt;th&gt;</code>、<code class="notranslate">&lt;td&gt;</code></h3>
+<ul>
+<li>
+<p><strong>标签说明</strong>：</p>
+<ul>
+<li><code class="notranslate">&lt;table&gt;</code>：整个表格的容器。</li>
+<li><code class="notranslate">&lt;tr&gt;</code>：表格的一行（table row）。</li>
+<li><code class="notranslate">&lt;th&gt;</code>：表头单元格（table header），默认加粗居中。</li>
+<li><code class="notranslate">&lt;td&gt;</code>：普通单元格（table data）。</li>
+</ul>
+</li>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight highlight-text-html-basic"><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">table</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">tr</span><span class="pl-kos">&gt;</span>
+        <span class="pl-kos">&lt;</span><span class="pl-ent">th</span><span class="pl-kos">&gt;</span>名字<span class="pl-kos">&lt;/</span><span class="pl-ent">th</span><span class="pl-kos">&gt;</span>
+        <span class="pl-kos">&lt;</span><span class="pl-ent">th</span><span class="pl-kos">&gt;</span>成绩<span class="pl-kos">&lt;/</span><span class="pl-ent">th</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;/</span><span class="pl-ent">tr</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">tr</span><span class="pl-kos">&gt;</span>
+        <span class="pl-kos">&lt;</span><span class="pl-ent">td</span><span class="pl-kos">&gt;</span>小明<span class="pl-kos">&lt;/</span><span class="pl-ent">td</span><span class="pl-kos">&gt;</span>
+        <span class="pl-kos">&lt;</span><span class="pl-ent">td</span><span class="pl-kos">&gt;</span>90<span class="pl-kos">&lt;/</span><span class="pl-ent">td</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;/</span><span class="pl-ent">tr</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">tr</span><span class="pl-kos">&gt;</span>
+        <span class="pl-kos">&lt;</span><span class="pl-ent">td</span><span class="pl-kos">&gt;</span>小红<span class="pl-kos">&lt;/</span><span class="pl-ent">td</span><span class="pl-kos">&gt;</span>
+        <span class="pl-kos">&lt;</span><span class="pl-ent">td</span><span class="pl-kos">&gt;</span>85<span class="pl-kos">&lt;/</span><span class="pl-ent">td</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;/</span><span class="pl-ent">tr</span><span class="pl-kos">&gt;</span>
+<span class="pl-kos">&lt;/</span><span class="pl-ent">table</span><span class="pl-kos">&gt;</span></pre></div>
+</li>
+<li>
+<p><strong>效果</strong>：</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>名字</th>
+<th>成绩</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>小明</td>
+<td>90</td>
+</tr>
+<tr>
+<td>小红</td>
+<td>85</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+</li>
+<li>
+<p><strong>坑提醒</strong>：</p>
+<ul>
+<li>忘了闭合 <code class="notranslate">&lt;tr&gt;</code>、<code class="notranslate">&lt;th&gt;</code>、<code class="notranslate">&lt;td&gt;</code>，表格可能显示不全或错位。</li>
+<li>每行 <code class="notranslate">&lt;tr&gt;</code> 的 <code class="notranslate">&lt;th&gt;</code> 或 <code class="notranslate">&lt;td&gt;</code> 数量要一致，不然表格会歪（比如第一行 2 个 <code class="notranslate">&lt;th&gt;</code>，第二行 3 个 <code class="notranslate">&lt;td&gt;</code>，就乱了）。</li>
+<li>默认没边框，丑得像狗屎，后面加 CSS 或临时用 <code class="notranslate">border</code> 属性。</li>
+</ul>
+</li>
+</ul>
+<h3>加边框（临时用 HTML 属性）</h3>
+<ul>
+<li>
+<p>HTML5 不推荐用 <code class="notranslate">border</code> 属性，但小白阶段可以用，简单粗暴：</p>
+<div class="highlight highlight-text-html-basic"><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">table</span> <span class="pl-c1">border</span>="<span class="pl-s">1</span>"<span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">tr</span><span class="pl-kos">&gt;</span>
+        <span class="pl-kos">&lt;</span><span class="pl-ent">th</span><span class="pl-kos">&gt;</span>名字<span class="pl-kos">&lt;/</span><span class="pl-ent">th</span><span class="pl-kos">&gt;</span>
+        <span class="pl-kos">&lt;</span><span class="pl-ent">th</span><span class="pl-kos">&gt;</span>成绩<span class="pl-kos">&lt;/</span><span class="pl-ent">th</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;/</span><span class="pl-ent">tr</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">tr</span><span class="pl-kos">&gt;</span>
+        <span class="pl-kos">&lt;</span><span class="pl-ent">td</span><span class="pl-kos">&gt;</span>小明<span class="pl-kos">&lt;/</span><span class="pl-ent">td</span><span class="pl-kos">&gt;</span>
+        <span class="pl-kos">&lt;</span><span class="pl-ent">td</span><span class="pl-kos">&gt;</span>90<span class="pl-kos">&lt;/</span><span class="pl-ent">td</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;/</span><span class="pl-ent">tr</span><span class="pl-kos">&gt;</span>
+<span class="pl-kos">&lt;/</span><span class="pl-ent">table</span><span class="pl-kos">&gt;</span></pre></div>
+</li>
+<li>
+<p><strong>效果</strong>：表格有 1 像素的边框，看着清楚多了。</p>
+</li>
+<li>
+<p><strong>坑提醒</strong>：</p>
+<ul>
+<li><code class="notranslate">border</code> 值是像素（比如 <code class="notranslate">border="2"</code>），别写单位（<code class="notranslate">border="2px"</code> 无效）。</li>
+<li>想让表格更骚气（改颜色、调整间距），得用 CSS。</li>
+<li><code class="notranslate">border</code> 只加在 <code class="notranslate">&lt;table&gt;</code> 上，单元格可能没边框，CSS 能解决。</li>
+</ul>
+</li>
+</ul>
+<h3>表格进阶：合并单元格</h3>
+<ul>
+<li>
+<p>用 <code class="notranslate">colspan</code>（跨列）、<code class="notranslate">rowspan</code>（跨行）合并单元格。</p>
+</li>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight highlight-text-html-basic"><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">table</span> <span class="pl-c1">border</span>="<span class="pl-s">1</span>"<span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">tr</span><span class="pl-kos">&gt;</span>
+        <span class="pl-kos">&lt;</span><span class="pl-ent">th</span> <span class="pl-c1">colspan</span>="<span class="pl-s">2</span>"<span class="pl-kos">&gt;</span>标题跨两列<span class="pl-kos">&lt;/</span><span class="pl-ent">th</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;/</span><span class="pl-ent">tr</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">tr</span><span class="pl-kos">&gt;</span>
+        <span class="pl-kos">&lt;</span><span class="pl-ent">td</span><span class="pl-kos">&gt;</span>单元格1<span class="pl-kos">&lt;/</span><span class="pl-ent">td</span><span class="pl-kos">&gt;</span>
+        <span class="pl-kos">&lt;</span><span class="pl-ent">td</span><span class="pl-kos">&gt;</span>单元格2<span class="pl-kos">&lt;/</span><span class="pl-ent">td</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;/</span><span class="pl-ent">tr</span><span class="pl-kos">&gt;</span>
+<span class="pl-kos">&lt;/</span><span class="pl-ent">table</span><span class="pl-kos">&gt;</span></pre></div>
+</li>
+<li>
+<p><strong>效果</strong>：</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>标题跨两列</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>单元格1</td>
+<td>单元格2</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+</li>
+<li>
+<p><strong>坑提醒</strong>：</p>
+<ul>
+<li>合并后，后面 <code class="notranslate">&lt;tr&gt;</code> 的 <code class="notranslate">&lt;td&gt;</code> 数量要减去合并的格子（比如 <code class="notranslate">colspan="2"</code>，下一行少 1 个 <code class="notranslate">&lt;td&gt;</code>）。</li>
+<li>别乱合并，容易算错格子数，表格会歪。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2>新技能 3：简单表单，收集用户输入像大佬</h2>
+<p>表单让用户输入信息，比如登录框、搜索框、留言板。HTML 表单标签很多，今天只学最简单的，够你装逼。</p>
+<h3>表单结构：<code class="notranslate">&lt;form&gt;</code>、<code class="notranslate">&lt;input&gt;</code>、<code class="notranslate">&lt;button&gt;</code></h3>
+<ul>
+<li>
+<p><strong>标签说明</strong>：</p>
+<ul>
+<li><code class="notranslate">&lt;form&gt;</code>：表单容器，包住所有输入控件。</li>
+<li><code class="notranslate">&lt;input&gt;</code>：输入框（单身狗标签），类型由 <code class="notranslate">type</code> 属性决定。</li>
+<li><code class="notranslate">&lt;button&gt;</code>：按钮，通常用来提交表单。</li>
+</ul>
+</li>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight highlight-text-html-basic"><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">form</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">p</span><span class="pl-kos">&gt;</span>用户名: <span class="pl-kos">&lt;</span><span class="pl-ent">input</span> <span class="pl-c1">type</span>="<span class="pl-s">text</span>" <span class="pl-c1">placeholder</span>="<span class="pl-s">输入你的名字</span>"<span class="pl-kos">&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-ent">p</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">p</span><span class="pl-kos">&gt;</span>密码: <span class="pl-kos">&lt;</span><span class="pl-ent">input</span> <span class="pl-c1">type</span>="<span class="pl-s">password</span>" <span class="pl-c1">placeholder</span>="<span class="pl-s">输入密码</span>"<span class="pl-kos">&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-ent">p</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">button</span><span class="pl-kos">&gt;</span>提交，操！<span class="pl-kos">&lt;/</span><span class="pl-ent">button</span><span class="pl-kos">&gt;</span>
+<span class="pl-kos">&lt;/</span><span class="pl-ent">form</span><span class="pl-kos">&gt;</span></pre></div>
+</li>
+<li>
+<p><strong>效果</strong>：</p>
+<p>用户名: [输入框，提示“输入你的名字”]<br>
+密码: [密码框，提示“输入密码”]<br>
+[提交，操！]</p>
+</li>
+<li>
+<p><strong>说明</strong>：</p>
+<ul>
+<li><code class="notranslate">&lt;input type="text"&gt;</code>：普通文本输入框。</li>
+<li><code class="notranslate">&lt;input type="password"&gt;</code>：密码输入框，输入显示为 <code class="notranslate">****</code>。</li>
+<li><code class="notranslate">placeholder</code>：输入框的提示文字，灰色，输入后消失。</li>
+<li><code class="notranslate">&lt;button&gt;</code>：默认是提交按钮，点一下提交表单数据。</li>
+</ul>
+</li>
+<li>
+<p><strong>坑提醒</strong>：</p>
+<ul>
+<li>现在点“提交”没反应，因为没加 <code class="notranslate">action</code> 属性（指定提交地址）。后面学 JavaScript 或后端再搞。</li>
+<li><code class="notranslate">&lt;input&gt;</code> 不要闭合（<code class="notranslate">&lt;input&gt;&lt;/input&gt;</code> 错，<code class="notranslate">&lt;input&gt;</code> 就行）。</li>
+<li><code class="notranslate">placeholder</code> 不显示？确认浏览器是最新版，旧浏览器可能不支持。</li>
+<li>表单默认样式丑（输入框小、按钮灰），用 CSS 美化。</li>
+</ul>
+</li>
+</ul>
+<h3>表单扩展：加个选择框</h3>
+<ul>
+<li>
+<p>用 <code class="notranslate">&lt;select&gt;</code> 和 <code class="notranslate">&lt;option&gt;</code> 做下拉菜单。</p>
+</li>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight highlight-text-html-basic"><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">form</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">p</span><span class="pl-kos">&gt;</span>选择你的爱好: 
+        <span class="pl-kos">&lt;</span><span class="pl-ent">select</span><span class="pl-kos">&gt;</span>
+            <span class="pl-kos">&lt;</span><span class="pl-ent">option</span><span class="pl-kos">&gt;</span>B 站<span class="pl-kos">&lt;/</span><span class="pl-ent">option</span><span class="pl-kos">&gt;</span>
+            <span class="pl-kos">&lt;</span><span class="pl-ent">option</span><span class="pl-kos">&gt;</span>LOL<span class="pl-kos">&lt;/</span><span class="pl-ent">option</span><span class="pl-kos">&gt;</span>
+            <span class="pl-kos">&lt;</span><span class="pl-ent">option</span><span class="pl-kos">&gt;</span>吃鸡<span class="pl-kos">&lt;/</span><span class="pl-ent">option</span><span class="pl-kos">&gt;</span>
+        <span class="pl-kos">&lt;/</span><span class="pl-ent">select</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;/</span><span class="pl-ent">p</span><span class="pl-kos">&gt;</span>
+<span class="pl-kos">&lt;/</span><span class="pl-ent">form</span><span class="pl-kos">&gt;</span></pre></div>
+</li>
+<li>
+<p><strong>效果</strong>：下拉框，选项是 B 站、LOL、吃鸡。</p>
+</li>
+<li>
+<p><strong>坑提醒</strong>：</p>
+<ul>
+<li><code class="notranslate">&lt;option&gt;</code> 必须放在 <code class="notranslate">&lt;select&gt;</code> 里，别单独写。</li>
+<li>忘了闭合 <code class="notranslate">&lt;select&gt;</code>，下拉框可能显示不全。</li>
+<li>想默认选中某项，加 <code class="notranslate">selected</code>：<code class="notranslate">&lt;option selected&gt;B 站&lt;/option&gt;</code>。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2>新技能 4：基础 CSS，网页从土鳖变骚气</h2>
+<p>HTML 是骨架，CSS（Cascading Style Sheets，层叠样式表）是装修，能改颜色、字体、间距、布局。CSS 很强大，今天只学最简单的<strong>内联样式</strong>（写在标签的 <code class="notranslate">style</code> 属性里），小白也能上手。</p>
+<h3>内联 CSS：用 <code class="notranslate">style</code> 属性</h3>
+<ul>
+<li>
+<p><strong>格式</strong>：<code class="notranslate">&lt;标签 style="属性: 值; 属性: 值"&gt;</code></p>
+</li>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight highlight-text-html-basic"><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">h1</span> <span class="pl-c1">style</span>="<span class="pl-s">color: red;</span>"<span class="pl-kos">&gt;</span>红色的标题，骚气冲天！<span class="pl-kos">&lt;/</span><span class="pl-ent">h1</span><span class="pl-kos">&gt;</span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">p</span> <span class="pl-c1">style</span>="<span class="pl-s">font-size: 20px; color: blue;</span>"<span class="pl-kos">&gt;</span>蓝色大字，爽得一批！<span class="pl-kos">&lt;/</span><span class="pl-ent">p</span><span class="pl-kos">&gt;</span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">img</span> <span class="pl-c1">src</span>="<span class="pl-s">dog.jpg</span>" <span class="pl-c1">alt</span>="<span class="pl-s">狗</span>" <span class="pl-c1">style</span>="<span class="pl-s">width: 200px;</span>"<span class="pl-kos">&gt;</span></pre></div>
+</li>
+<li>
+<p><strong>效果</strong>：</p>
+<ul>
+<li>标题变红色。</li>
+<li>段落文字变蓝，字体大小 20 像素。</li>
+<li>图片宽度缩到 200 像素。</li>
+</ul>
+</li>
+<li>
+<p><strong>常用 CSS 属性</strong>：</p>
+<ul>
+<li><code class="notranslate">color</code>：文字颜色（<code class="notranslate">red</code>, <code class="notranslate">blue</code>, <code class="notranslate">#FF0000<span class="ml-1 d-inline-block border circle color-border-subtle" style="background-color: #FF0000; height: 8px; width: 8px;"></span></code>, <code class="notranslate">rgb(255, 0, 0)<span class="ml-1 d-inline-block border circle color-border-subtle" style="background-color: rgb(255, 0, 0); height: 8px; width: 8px;"></span></code>）。</li>
+<li><code class="notranslate">font-size</code>：字体大小（<code class="notranslate">20px</code>, <code class="notranslate">1.5em</code>, <code class="notranslate">16pt</code>）。</li>
+<li><code class="notranslate">width</code>、<code class="notranslate">height</code>：宽度、高度（<code class="notranslate">200px</code>, <code class="notranslate">50%</code>）。</li>
+<li><code class="notranslate">background-color</code>：背景色（<code class="notranslate">yellow</code>, <code class="notranslate">#00FF00<span class="ml-1 d-inline-block border circle color-border-subtle" style="background-color: #00FF00; height: 8px; width: 8px;"></span></code>）。</li>
+<li><code class="notranslate">border</code>：边框（<code class="notranslate">1px solid black</code>）。</li>
+<li><code class="notranslate">text-align</code>：文字对齐（<code class="notranslate">left</code>, <code class="notranslate">center</code>, <code class="notranslate">right</code>）。</li>
+</ul>
+</li>
+<li>
+<p><strong>坑提醒</strong>：</p>
+<ul>
+<li>CSS 属性名区分大小写，<code class="notranslate">color</code> 正确，<code class="notranslate">Color</code> 无效。</li>
+<li>属性间用 <code class="notranslate">;</code> 分隔，忘了分号可能导致后面样式失效。</li>
+<li>值写错（比如 <code class="notranslate">color: redd</code>），样式不生效，用 Chrome F12 检查。</li>
+<li>内联 CSS 不利于维护，后面学外部 CSS 文件。</li>
+</ul>
+</li>
+</ul>
+<h3>给表格加样式</h3>
+<ul>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight highlight-text-html-basic"><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">table</span> <span class="pl-c1">style</span>="<span class="pl-s">border: 1px solid black;</span>"<span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">tr</span><span class="pl-kos">&gt;</span>
+        <span class="pl-kos">&lt;</span><span class="pl-ent">th</span> <span class="pl-c1">style</span>="<span class="pl-s">background-color: yellow; border: 1px solid black;</span>"<span class="pl-kos">&gt;</span>名字<span class="pl-kos">&lt;/</span><span class="pl-ent">th</span><span class="pl-kos">&gt;</span>
+        <span class="pl-kos">&lt;</span><span class="pl-ent">th</span> <span class="pl-c1">style</span>="<span class="pl-s">background-color: yellow; border: 1px solid black;</span>"<span class="pl-kos">&gt;</span>成绩<span class="pl-kos">&lt;/</span><span class="pl-ent">th</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;/</span><span class="pl-ent">tr</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">tr</span><span class="pl-kos">&gt;</span>
+        <span class="pl-kos">&lt;</span><span class="pl-ent">td</span> <span class="pl-c1">style</span>="<span class="pl-s">border: 1px solid black;</span>"<span class="pl-kos">&gt;</span>小明<span class="pl-kos">&lt;/</span><span class="pl-ent">td</span><span class="pl-kos">&gt;</span>
+        <span class="pl-kos">&lt;</span><span class="pl-ent">td</span> <span class="pl-c1">style</span>="<span class="pl-s">border: 1px solid black;</span>"<span class="pl-kos">&gt;</span>90<span class="pl-kos">&lt;/</span><span class="pl-ent">td</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;/</span><span class="pl-ent">tr</span><span class="pl-kos">&gt;</span>
+<span class="pl-kos">&lt;/</span><span class="pl-ent">table</span><span class="pl-kos">&gt;</span></pre></div>
+</li>
+<li>
+<p><strong>效果</strong>：表格有黑边，表头黄色，清晰又骚气。</p>
+</li>
+<li>
+<p><strong>坑提醒</strong>：</p>
+<ul>
+<li>每格都加 <code class="notranslate">border</code>，不然边框不完整（只加 <code class="notranslate">&lt;table&gt;</code> 的 <code class="notranslate">border</code> 不够）。</li>
+<li>颜色值可以用名字（<code class="notranslate">red</code>）、十六进制（<code class="notranslate">#FF0000<span class="ml-1 d-inline-block border circle color-border-subtle" style="background-color: #FF0000; height: 8px; width: 8px;"></span></code>）、RGB（<code class="notranslate">rgb(255, 0, 0)<span class="ml-1 d-inline-block border circle color-border-subtle" style="background-color: rgb(255, 0, 0); height: 8px; width: 8px;"></span></code>）。</li>
+<li>想调整单元格间距，用 CSS <code class="notranslate">padding</code> 或 <code class="notranslate">margin</code>，后面学。</li>
+</ul>
+</li>
+</ul>
+<h3>给表单加样式</h3>
+<ul>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight highlight-text-html-basic"><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">form</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">p</span><span class="pl-kos">&gt;</span>用户名: <span class="pl-kos">&lt;</span><span class="pl-ent">input</span> <span class="pl-c1">type</span>="<span class="pl-s">text</span>" <span class="pl-c1">style</span>="<span class="pl-s">width: 200px; border: 2px solid blue;</span>"<span class="pl-kos">&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-ent">p</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">button</span> <span class="pl-c1">style</span>="<span class="pl-s">background-color: red; color: white;</span>"<span class="pl-kos">&gt;</span>提交，操！<span class="pl-kos">&lt;/</span><span class="pl-ent">button</span><span class="pl-kos">&gt;</span>
+<span class="pl-kos">&lt;/</span><span class="pl-ent">form</span><span class="pl-kos">&gt;</span></pre></div>
+</li>
+<li>
+<p><strong>效果</strong>：输入框宽 200px，蓝边框；按钮红底白字。</p>
+</li>
+<li>
+<p><strong>坑提醒</strong>：</p>
+<ul>
+<li>输入框默认窄，加 <code class="notranslate">width</code> 让它好看。</li>
+<li>按钮样式不生效？检查 <code class="notranslate">background-color</code> 和 <code class="notranslate">color</code> 是否拼错。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2>实战：写一个牛逼到爆的网页</h2>
+<p>整合今天学的，写个包含列表、表格、表单、CSS 样式的网页。假设你有张图片 <code class="notranslate">dog.jpg</code>。</p>
+<h3>代码</h3>
+<div class="highlight highlight-text-html-basic"><pre class="notranslate"><span class="pl-c1">&lt;!DOCTYPE html<span class="pl-kos">&gt;</span></span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">html</span> <span class="pl-c1">lang</span>="<span class="pl-s">zh-CN</span>"<span class="pl-kos">&gt;</span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">head</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">meta</span> <span class="pl-c1">charset</span>="<span class="pl-s">UTF-8</span>"<span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">title</span><span class="pl-kos">&gt;</span>第二天网页，操，骚气升级！<span class="pl-kos">&lt;/</span><span class="pl-ent">title</span><span class="pl-kos">&gt;</span>
+<span class="pl-kos">&lt;/</span><span class="pl-ent">head</span><span class="pl-kos">&gt;</span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">body</span> <span class="pl-c1">style</span>="<span class="pl-s">background-color: #f0f0f0;</span>"<span class="pl-kos">&gt;</span>
+    <span class="pl-c">&lt;!-- 主标题 --&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">h1</span> <span class="pl-c1">style</span>="<span class="pl-s">color: blue; text-align: center;</span>"<span class="pl-kos">&gt;</span>欢迎体验我的第二天网页，爽爆了！<span class="pl-kos">&lt;/</span><span class="pl-ent">h1</span><span class="pl-kos">&gt;</span>
+    
+    <span class="pl-c">&lt;!-- 关于我 --&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">h2</span> <span class="pl-c1">style</span>="<span class="pl-s">color: green;</span>"<span class="pl-kos">&gt;</span>关于我<span class="pl-kos">&lt;/</span><span class="pl-ent">h2</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">p</span> <span class="pl-c1">style</span>="<span class="pl-s">font-size: 18px;</span>"<span class="pl-kos">&gt;</span>老子是 HTML 小白，第二天继续冲，感觉他妈的爽到飞起！<span class="pl-kos">&lt;/</span><span class="pl-ent">p</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">p</span> <span class="pl-c1">style</span>="<span class="pl-s">font-size: 18px;</span>"<span class="pl-kos">&gt;</span>这个网页有列表、表格、表单，还加了点样式，牛逼得不行！<span class="pl-kos">&lt;/</span><span class="pl-ent">p</span><span class="pl-kos">&gt;</span>
+    
+    <span class="pl-c">&lt;!-- 爱好列表 --&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">h2</span> <span class="pl-c1">style</span>="<span class="pl-s">color: green;</span>"<span class="pl-kos">&gt;</span>我的爱好<span class="pl-kos">&lt;/</span><span class="pl-ent">h2</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">ul</span><span class="pl-kos">&gt;</span>
+        <span class="pl-kos">&lt;</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>刷 B 站，动漫游戏视频看不停<span class="pl-kos">&lt;/</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>
+        <span class="pl-kos">&lt;</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>打 LOL，操，排位上分贼爽<span class="pl-kos">&lt;/</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>
+        <span class="pl-kos">&lt;</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>吃鸡，落地成盒也开心<span class="pl-kos">&lt;/</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;/</span><span class="pl-ent">ul</span><span class="pl-kos">&gt;</span>
+    
+    <span class="pl-c">&lt;!-- 学习计划表格 --&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">h2</span> <span class="pl-c1">style</span>="<span class="pl-s">color: green;</span>"<span class="pl-kos">&gt;</span>我的学习计划<span class="pl-kos">&lt;/</span><span class="pl-ent">h2</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">table</span> <span class="pl-c1">style</span>="<span class="pl-s">border: 1px solid black;</span>"<span class="pl-kos">&gt;</span>
+        <span class="pl-kos">&lt;</span><span class="pl-ent">tr</span><span class="pl-kos">&gt;</span>
+            <span class="pl-kos">&lt;</span><span class="pl-ent">th</span> <span class="pl-c1">style</span>="<span class="pl-s">background-color: yellow; border: 1px solid black;</span>"<span class="pl-kos">&gt;</span>阶段<span class="pl-kos">&lt;/</span><span class="pl-ent">th</span><span class="pl-kos">&gt;</span>
+            <span class="pl-kos">&lt;</span><span class="pl-ent">th</span> <span class="pl-c1">style</span>="<span class="pl-s">background-color: yellow; border: 1px solid black;</span>"<span class="pl-kos">&gt;</span>内容<span class="pl-kos">&lt;/</span><span class="pl-ent">th</span><span class="pl-kos">&gt;</span>
+        <span class="pl-kos">&lt;/</span><span class="pl-ent">tr</span><span class="pl-kos">&gt;</span>
+        <span class="pl-kos">&lt;</span><span class="pl-ent">tr</span><span class="pl-kos">&gt;</span>
+            <span class="pl-kos">&lt;</span><span class="pl-ent">td</span> <span class="pl-c1">style</span>="<span class="pl-s">border: 1px solid black;</span>"<span class="pl-kos">&gt;</span>第一周<span class="pl-kos">&lt;/</span><span class="pl-ent">td</span><span class="pl-kos">&gt;</span>
+            <span class="pl-kos">&lt;</span><span class="pl-ent">td</span> <span class="pl-c1">style</span>="<span class="pl-s">border: 1px solid black;</span>"<span class="pl-kos">&gt;</span>搞定 HTML 基础<span class="pl-kos">&lt;/</span><span class="pl-ent">td</span><span class="pl-kos">&gt;</span>
+        <span class="pl-kos">&lt;/</span><span class="pl-ent">tr</span><span class="pl-kos">&gt;</span>
+        <span class="pl-kos">&lt;</span><span class="pl-ent">tr</span><span class="pl-kos">&gt;</span>
+            <span class="pl-kos">&lt;</span><span class="pl-ent">td</span> <span class="pl-c1">style</span>="<span class="pl-s">border: 1px solid black;</span>"<span class="pl-kos">&gt;</span>第二周<span class="pl-kos">&lt;/</span><span class="pl-ent">td</span><span class="pl-kos">&gt;</span>
+            <span class="pl-kos">&lt;</span><span class="pl-ent">td</span> <span class="pl-c1">style</span>="<span class="pl-s">border: 1px solid black;</span>"<span class="pl-kos">&gt;</span>学 CSS 装扮网页<span class="pl-kos">&lt;/</span><span class="pl-ent">td</span><span class="pl-kos">&gt;</span>
+        <span class="pl-kos">&lt;/</span><span class="pl-ent">tr</span><span class="pl-kos">&gt;</span>
+        <span class="pl-kos">&lt;</span><span class="pl-ent">tr</span><span class="pl-kos">&gt;</span>
+            <span class="pl-kos">&lt;</span><span class="pl-ent">td</span> <span class="pl-c1">style</span>="<span class="pl-s">border: 1px solid black;</span>"<span class="pl-kos">&gt;</span>第三周<span class="pl-kos">&lt;/</span><span class="pl-ent">td</span><span class="pl-kos">&gt;</span>
+            <span class="pl-kos">&lt;</span><span class="pl-ent">td</span> <span class="pl-c1">style</span>="<span class="pl-s">border: 1px solid black;</span>"<span class="pl-kos">&gt;</span>搞 JavaScript 让网页动起来<span class="pl-kos">&lt;/</span><span class="pl-ent">td</span><span class="pl-kos">&gt;</span>
+        <span class="pl-kos">&lt;/</span><span class="pl-ent">tr</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;/</span><span class="pl-ent">table</span><span class="pl-kos">&gt;</span>
+    
+    <span class="pl-c">&lt;!-- 留言表单 --&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">h2</span> <span class="pl-c1">style</span>="<span class="pl-s">color: green;</span>"<span class="pl-kos">&gt;</span>给我留言<span class="pl-kos">&lt;/</span><span class="pl-ent">h2</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">form</span><span class="pl-kos">&gt;</span>
+        <span class="pl-kos">&lt;</span><span class="pl-ent">p</span><span class="pl-kos">&gt;</span>名字: <span class="pl-kos">&lt;</span><span class="pl-ent">input</span> <span class="pl-c1">type</span>="<span class="pl-s">text</span>" <span class="pl-c1">placeholder</span>="<span class="pl-s">你的名字</span>" <span class="pl-c1">style</span>="<span class="pl-s">width: 200px; border: 2px solid blue;</span>"<span class="pl-kos">&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-ent">p</span><span class="pl-kos">&gt;</span>
+        <span class="pl-kos">&lt;</span><span class="pl-ent">p</span><span class="pl-kos">&gt;</span>密码: <span class="pl-kos">&lt;</span><span class="pl-ent">input</span> <span class="pl-c1">type</span>="<span class="pl-s">password</span>" <span class="pl-c1">placeholder</span>="<span class="pl-s">输入密码</span>" <span class="pl-c1">style</span>="<span class="pl-s">width: 200px; border: 2px solid blue;</span>"<span class="pl-kos">&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-ent">p</span><span class="pl-kos">&gt;</span>
+        <span class="pl-kos">&lt;</span><span class="pl-ent">p</span><span class="pl-kos">&gt;</span>爱好: 
+            <span class="pl-kos">&lt;</span><span class="pl-ent">select</span><span class="pl-kos">&gt;</span>
+                <span class="pl-kos">&lt;</span><span class="pl-ent">option</span><span class="pl-kos">&gt;</span>B 站<span class="pl-kos">&lt;/</span><span class="pl-ent">option</span><span class="pl-kos">&gt;</span>
+                <span class="pl-kos">&lt;</span><span class="pl-ent">option</span><span class="pl-kos">&gt;</span>LOL<span class="pl-kos">&lt;/</span><span class="pl-ent">option</span><span class="pl-kos">&gt;</span>
+                <span class="pl-kos">&lt;</span><span class="pl-ent">option</span><span class="pl-kos">&gt;</span>吃鸡<span class="pl-kos">&lt;/</span><span class="pl-ent">option</span><span class="pl-kos">&gt;</span>
+            <span class="pl-kos">&lt;/</span><span class="pl-ent">select</span><span class="pl-kos">&gt;</span>
+        <span class="pl-kos">&lt;/</span><span class="pl-ent">p</span><span class="pl-kos">&gt;</span>
+        <span class="pl-kos">&lt;</span><span class="pl-ent">button</span> <span class="pl-c1">style</span>="<span class="pl-s">background-color: red; color: white;</span>"<span class="pl-kos">&gt;</span>提交，操！<span class="pl-kos">&lt;/</span><span class="pl-ent">button</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;/</span><span class="pl-ent">form</span><span class="pl-kos">&gt;</span>
+    
+    <span class="pl-c">&lt;!-- 图片 --&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">h2</span> <span class="pl-c1">style</span>="<span class="pl-s">color: green;</span>"<span class="pl-kos">&gt;</span>一张骚气的图片<span class="pl-kos">&lt;/</span><span class="pl-ent">h2</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">img</span> <span class="pl-c1">src</span>="<span class="pl-s">dog.jpg</span>" <span class="pl-c1">alt</span>="<span class="pl-s">一只帅狗</span>" <span class="pl-c1">style</span>="<span class="pl-s">width: 300px;</span>"<span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">p</span> <span class="pl-c1">style</span>="<span class="pl-s">font-size: 18px; color: purple;</span>"<span class="pl-kos">&gt;</span>这只狗帅得一批，哈哈！<span class="pl-kos">&lt;/</span><span class="pl-ent">p</span><span class="pl-kos">&gt;</span>
+<span class="pl-kos">&lt;/</span><span class="pl-ent">body</span><span class="pl-kos">&gt;</span>
+<span class="pl-kos">&lt;/</span><span class="pl-ent">html</span><span class="pl-kos">&gt;</span></pre></div>
+<h3>怎么运行</h3>
+<ol>
+<li>在 VS Code 建新文件，复制代码，保存为 <code class="notranslate">day2.html</code>。</li>
+<li>确保 <code class="notranslate">dog.jpg</code> 在同一文件夹（没图片就找张别的，改名）。</li>
+<li>用浏览器打开，或用 Live Server 实时预览。</li>
+</ol>
+<h3>效果</h3>
+<p>网页长这样：</p>
+<ul>
+<li>
+<p><strong>浏览器标题</strong>：第二天网页，操，骚气升级！</p>
+</li>
+<li>
+<p><strong>内容（带样式）</strong>：</p>
+<h1>欢迎体验我的第二天网页，爽爆了！（蓝色，居中）</h1>
+<h2>关于我（绿色）</h2>
+<p>老子是 HTML 小白，第二天继续冲，感觉他妈的爽到飞起！（18px）<br>
+这个网页有列表、表格、表单，还加了点样式，牛逼得不行！（18px）</p>
+<h2>我的爱好（绿色）</h2>
+<ul>
+<li>刷 B 站，动漫游戏视频看不停</li>
+<li>打 LOL，操，排位上分贼爽</li>
+<li>吃鸡，落地成盒也开心</li>
+</ul>
+<h2>我的学习计划（绿色）</h2>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>阶段</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>第一周</td>
+<td>搞定 HTML 基础</td>
+</tr>
+<tr>
+<td>第二周</td>
+<td>学 CSS 装扮网页</td>
+</tr>
+<tr>
+<td>第三周</td>
+<td>搞 JavaScript 让网页动起来</td>
+</tr>
+<tr>
+<td>（黄色表头，黑边框）</td>
+<td></td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<h2>给我留言（绿色）</h2>
+<p>名字: [输入框，200px 宽，蓝边框]<br>
+密码: [密码框，200px 宽，蓝边框]<br>
+爱好: [下拉框：B 站、LOL、吃鸡]<br>
+[提交，操！]（红底白字）</p>
+<h2>一张骚气的图片（绿色）</h2>
+<p>[图片：一只帅狗]（300px 宽）<br>
+这只狗帅得一批，哈哈！（18px，紫色）</p>
+</li>
+<li>
+<p><strong>整体效果</strong>：背景浅灰，标题蓝色居中，副标题绿色，表格黄色表头，表单输入框蓝边框，按钮红底白字，图片缩放合适，文字大小颜色骚气。</p>
+</li>
+</ul>
+<p><strong>坑提醒</strong>：</p>
+<ul>
+<li><strong>图片没显示</strong>？检查 <code class="notranslate">dog.jpg</code> 是否在文件夹，文件名大小写一致，路径别用绝对路径（<code class="notranslate">C:\XXX</code>）。</li>
+<li><strong>表格没边框</strong>？确认每格都加了 <code class="notranslate">border: 1px solid black</code>。</li>
+<li><strong>表单点提交没反应</strong>？正常，后面学 JavaScript 加功能。</li>
+<li><strong>CSS 没效果</strong>？检查 <code class="notranslate">style</code> 语法（属性间用 <code class="notranslate">;</code> 分开，值别拼错）。</li>
+<li><strong>背景色没变</strong>？确认 <code class="notranslate">&lt;body&gt;</code> 的 <code class="notranslate">background-color</code> 写对（<code class="notranslate">#f0f0f0<span class="ml-1 d-inline-block border circle color-border-subtle" style="background-color: #f0f0f0; height: 8px; width: 8px;"></span></code> 是浅灰）。</li>
+<li><strong>Live Server 不刷新</strong>？确认保存文件，端口没被占（换 5501 试试）。</li>
+</ul>
+<hr>
+<h2>常见问题及解决：别他妈抓狂，坑都给你列好了</h2>
+<p>昨天的问题（乱码、图片不显示、链接点不动）可能还会遇到，今天加几个新坑，帮你快速解决：</p>
+<ol>
+<li>
+<p><strong>列表显示不正常？</strong></p>
+<ul>
+<li>
+<p><strong>原因</strong>：<code class="notranslate">&lt;li&gt;</code> 没放 <code class="notranslate">&lt;ul&gt;</code> 或 <code class="notranslate">&lt;ol&gt;</code> 里，或者嵌套乱了。</p>
+</li>
+<li>
+<p><strong>解决</strong>：</p>
+<ul>
+<li>
+<p>确认 <code class="notranslate">&lt;ul&gt;&lt;li&gt;xxx&lt;/li&gt;&lt;/ul&gt;</code> 或 <code class="notranslate">&lt;ol&gt;&lt;li&gt;xxx&lt;/li&gt;&lt;/ol&gt;</code> 结构完整。</p>
+</li>
+<li>
+<p>嵌套列表别交叉，比如：</p>
+<div class="highlight highlight-text-html-basic"><pre class="notranslate"><span class="pl-c">&lt;!-- 错 --&gt;</span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">ul</span><span class="pl-kos">&gt;</span><span class="pl-kos">&lt;</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span><span class="pl-kos">&lt;</span><span class="pl-ent">ul</span><span class="pl-kos">&gt;</span>xxx<span class="pl-kos">&lt;/</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-ent">ul</span><span class="pl-kos">&gt;</span><span class="pl-kos">&lt;/</span>ul<span class="pl-kos">&gt;</span>
+<span class="pl-c">&lt;!-- 对 --&gt;</span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">ul</span><span class="pl-kos">&gt;</span><span class="pl-kos">&lt;</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span><span class="pl-kos">&lt;</span><span class="pl-ent">ul</span><span class="pl-kos">&gt;</span><span class="pl-kos">&lt;</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>xxx<span class="pl-kos">&lt;/</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-ent">ul</span><span class="pl-kos">&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-ent">ul</span><span class="pl-kos">&gt;</span></pre></div>
+</li>
+<li>
+<p>用 Chrome F12 检查 HTML 结构，看层级是否正确```html</p>
+</li>
+</ul>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>阶段</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>第一周</td>
+<td>搞定 HTML 基础</td>
+</tr>
+<tr>
+<td>第二周</td>
+<td>学 CSS 装扮网页</td>
+</tr>
+<tr>
+<td>第三周</td>
+<td>搞 JavaScript 让网页动起来</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p>``` - **效果**：表格有黑边，表头黄色，清晰又骚气。 - **坑提醒**： - 每格都加 `border`，不然边框不完整（只加 `` 的 `border` 不够）。 - 颜色值可以用名字（`red`）、十六进制（`#FF0000`）、RGB（`rgb(255, 0, 0)`）。 - 想调整单元格间距，用 CSS `padding` 或 `margin`，后面学。</p>
+</li>
+<li>
+<p><strong>表单输入框太丑或没反应？</strong></p>
+<ul>
+<li><strong>原因</strong>：默认样式丑，或没加 <code class="notranslate">action</code> 属性。</li>
+<li><strong>解决</strong>：
+<ul>
+<li>用 CSS 改输入框大小（比如 <code class="notranslate">&lt;input style="width: 200px;"&gt;</code>）。</li>
+<li>提交没反应正常，后面学 JavaScript 或后端。</li>
+<li><code class="notranslate">placeholder</code> 文字不显示？确认浏览器是最新版，旧浏览器可能不支持。</li>
+<li>输入框太小？加 <code class="notranslate">width</code> 和 <code class="notranslate">padding</code>（比如 <code class="notranslate">style="width: 200px; padding: 5px;"</code>）。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>CSS 没效果？</strong></p>
+<ul>
+<li><strong>原因</strong>：语法错、属性不支持、值写错。</li>
+<li><strong>解决</strong>：
+<ul>
+<li>检查 <code class="notranslate">style</code> 属性，比如 <code class="notranslate">color: red;</code>（别写 <code class="notranslate">color: Red</code> 或 <code class="notranslate">color=red</code>）。</li>
+<li>颜色值用 <code class="notranslate">red</code>, <code class="notranslate">#FF0000<span class="ml-1 d-inline-block border circle color-border-subtle" style="background-color: #FF0000; height: 8px; width: 8px;"></span></code>, <code class="notranslate">rgb(255, 0, 0)<span class="ml-1 d-inline-block border circle color-border-subtle" style="background-color: rgb(255, 0, 0); height: 8px; width: 8px;"></span></code>，别用奇怪的值（比如 <code class="notranslate">redd</code>）。</li>
+<li>用 Chrome F12 开发者工具，看“Styles”面板，找错误。</li>
+<li>多个属性忘了 <code class="notranslate">;</code>，后面样式可能失效（比如 <code class="notranslate">style="color: red font-size: 20px"</code> 错，改成 <code class="notranslate">style="color: red; font-size: 20px;"</code>）。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>网页背景色没变？</strong></p>
+<ul>
+<li><strong>原因</strong>：<code class="notranslate">background-color</code> 写错或作用范围不对。</li>
+<li><strong>解决</strong>：
+<ul>
+<li>确认写的是 <code class="notranslate">background-color: #f0f0f0;</code>（别漏 <code class="notranslate">color</code> 或写成 <code class="notranslate">background</code>）。</li>
+<li>整页背景要写在 <code class="notranslate">&lt;body&gt;</code> 的 <code class="notranslate">style</code> 里（比如 <code class="notranslate">&lt;body style="background-color: #f0f0f0;"&gt;</code>）。</li>
+<li>检查值是否正确，<code class="notranslate">#f0f0f0<span class="ml-1 d-inline-block border circle color-border-subtle" style="background-color: #f0f0f0; height: 8px; width: 8px;"></span></code> 是浅灰，<code class="notranslate">#000000<span class="ml-1 d-inline-block border circle color-border-subtle" style="background-color: #000000; height: 8px; width: 8px;"></span></code> 是黑，<code class="notranslate">#FFFFFF<span class="ml-1 d-inline-block border circle color-border-subtle" style="background-color: #FFFFFF; height: 8px; width: 8px;"></span></code> 是白。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>VS Code 或 Live Server 抽风？</strong></p>
+<ul>
+<li><strong>原因</strong>：插件没装好、端口占用、文件没保存。</li>
+<li><strong>解决</strong>：
+<ul>
+<li>确认 Live Server 插件已安装并启用（VS Code 底部有“Go Live”按钮）。</li>
+<li>端口被占（比如 5500），在 VS Code 设置里改端口（比如 5501）。</li>
+<li>每次改代码后保存（Ctrl + S），Live Server 才会刷新。</li>
+<li>VS Code 卡顿？重启软件，或者关掉无关扩展。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>代码没效果，浏览器报错？</strong></p>
+<ul>
+<li><strong>原因</strong>：语法错误、浏览器不兼容、标签嵌套错。</li>
+<li><strong>解决</strong>：
+<ul>
+<li>打开 Chrome F12 开发者工具，看“Console”标签有没有错误提示。</li>
+<li>比如提示“Unexpected token”，检查标签是否写错（比如 <code class="notranslate">&lt;h1&gt;xxx&lt;h1&gt;</code>）。</li>
+<li>用最新版 Chrome，避开老浏览器兼容问题。</li>
+<li>检查嵌套，比如 <code class="notranslate">&lt;form&gt;&lt;p&gt;&lt;input&gt;&lt;/p&gt;&lt;/form&gt;</code> 合法，<code class="notranslate">&lt;form&gt;&lt;p&gt;&lt;input&gt;&lt;/form&gt;&lt;/p&gt;</code> 会乱。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>练习：动动手，练出顶级骚气</p>
+<p>光看不练假把式，下面是几个练习，巩固今天学的，练完你的网页能拿去装逼：</p>
+<ol>
+<li>
+<p><strong>改样式</strong>：</p>
+<ul>
+<li>把 <code class="notranslate">&lt;h1&gt;</code> 改成紫色（<code class="notranslate">color: purple</code>），字体大小 30px，居中（<code class="notranslate">text-align: center</code>）。</li>
+<li>表格边框改成蓝色（<code class="notranslate">border: 1px solid blue</code>），表头背景改成绿色（<code class="notranslate">background-color: green</code>）。</li>
+<li>按钮改成绿底白字（<code class="notranslate">background-color: green; color: white</code>）。</li>
+<li><strong>坑提醒</strong>：
+<ul>
+<li>CSS 属性值别写错（<code class="notranslate">color: purple</code> 不是 <code class="notranslate">color: Purple</code>）。</li>
+<li>检查分号（<code class="notranslate">style="color: purple; font-size: 30px;"</code>）。</li>
+<li>保存后刷新，确认效果。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>加列表</strong>：</p>
+<ul>
+<li>
+<p>加一个有序列表，写你未来 3 天的学习计划（比如“明天学 CSS”）。</p>
+</li>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight highlight-text-html-basic"><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">h2</span> <span class="pl-c1">style</span>="<span class="pl-s">color: green;</span>"<span class="pl-kos">&gt;</span>未来三天计划<span class="pl-kos">&lt;/</span><span class="pl-ent">h2</span><span class="pl-kos">&gt;</span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">ol</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>明天学 CSS，搞样式<span class="pl-kos">&lt;/</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>后天学 JavaScript，网页动起来<span class="pl-kos">&lt;/</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>大后天做个小项目，装逼<span class="pl-kos">&lt;/</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>
+<span class="pl-kos">&lt;/</span><span class="pl-ent">ol</span><span class="pl-kos">&gt;</span></pre></div>
+</li>
+<li>
+<p><strong>坑提醒</strong>：</p>
+<ul>
+<li><code class="notranslate">&lt;li&gt;</code> 放 <code class="notranslate">&lt;ol&gt;</code> 里，别漏闭合（<code class="notranslate">&lt;li&gt;xxx&lt;/li&gt;</code>）。</li>
+<li>列表样式想改（比如用字母），加 <code class="notranslate">type="a"</code> 或用 CSS。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>改表格</strong>：</p>
+<ul>
+<li>
+<p>在表格加一行，写你自己的数据（比如“第四周，建个个人网站”）。</p>
+</li>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight highlight-text-html-basic"><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">tr</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">td</span> <span class="pl-c1">style</span>="<span class="pl-s">border: 1px solid black;</span>"<span class="pl-kos">&gt;</span>第四周<span class="pl-kos">&lt;/</span><span class="pl-ent">td</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">td</span> <span class="pl-c1">style</span>="<span class="pl-s">border: 1px solid black;</span>"<span class="pl-kos">&gt;</span>建个个人网站<span class="pl-kos">&lt;/</span><span class="pl-ent">td</span><span class="pl-kos">&gt;</span>
+<span class="pl-kos">&lt;/</span><span class="pl-ent">tr</span><span class="pl-kos">&gt;</span></pre></div>
+</li>
+<li>
+<p><strong>坑提醒</strong>：</p>
+<ul>
+<li>新行 <code class="notranslate">&lt;td&gt;</code> 数量要跟表头一致（2 个 <code class="notranslate">&lt;th&gt;</code> 就对应 2 个 <code class="notranslate">&lt;td&gt;</code>）。</li>
+<li>边框别忘了加（<code class="notranslate">border: 1px solid black</code>）。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>加表单项</strong>：</p>
+<ul>
+<li>
+<p>在表单加个文本输入框（比如“邮箱”）和一个下拉框（比如“性别”）。</p>
+</li>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight highlight-text-html-basic"><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">p</span><span class="pl-kos">&gt;</span>邮箱: <span class="pl-kos">&lt;</span><span class="pl-ent">input</span> <span class="pl-c1">type</span>="<span class="pl-s">text</span>" <span class="pl-c1">placeholder</span>="<span class="pl-s">你的邮箱</span>" <span class="pl-c1">style</span>="<span class="pl-s">width: 200px; border: 2px solid blue;</span>"<span class="pl-kos">&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-ent">p</span><span class="pl-kos">&gt;</span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">p</span><span class="pl-kos">&gt;</span>性别: 
+    <span class="pl-kos">&lt;</span><span class="pl-ent">select</span><span class="pl-kos">&gt;</span>
+        <span class="pl-kos">&lt;</span><span class="pl-ent">option</span><span class="pl-kos">&gt;</span>男<span class="pl-kos">&lt;/</span><span class="pl-ent">option</span><span class="pl-kos">&gt;</span>
+        <span class="pl-kos">&lt;</span><span class="pl-ent">option</span><span class="pl-kos">&gt;</span>女<span class="pl-kos">&lt;/</span><span class="pl-ent">option</span><span class="pl-kos">&gt;</span>
+        <span class="pl-kos">&lt;</span><span class="pl-ent">option</span><span class="pl-kos">&gt;</span>其他<span class="pl-kos">&lt;/</span><span class="pl-ent">option</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;/</span><span class="pl-ent">select</span><span class="pl-kos">&gt;</span>
+<span class="pl-kos">&lt;/</span><span class="pl-ent">p</span><span class="pl-kos">&gt;</span></pre></div>
+</li>
+<li>
+<p><strong>坑提醒</strong>：</p>
+<ul>
+<li>检查 <code class="notranslate">type</code> 是否正确（<code class="notranslate">text</code> 不是 <code class="notranslate">txt</code>）。</li>
+<li><code class="notranslate">&lt;option&gt;</code> 放 <code class="notranslate">&lt;select&gt;</code> 里，别漏闭合。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>加图片和样式</strong>：</p>
+<ul>
+<li>
+<p>加一张新图片（比如 <code class="notranslate">cat.jpg</code>），设置宽度 250px，描述文字改成绿色，字体大小 20px。</p>
+</li>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight highlight-text-html-basic"><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">h2</span> <span class="pl-c1">style</span>="<span class="pl-s">color: green;</span>"<span class="pl-kos">&gt;</span>另一张骚气图片<span class="pl-kos">&lt;/</span><span class="pl-ent">h2</span><span class="pl-kos">&gt;</span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">img</span> <span class="pl-c1">src</span>="<span class="pl-s">cat.jpg</span>" <span class="pl-c1">alt</span>="<span class="pl-s">一只萌猫</span>" <span class="pl-c1">style</span>="<span class="pl-s">width: 250px;</span>"<span class="pl-kos">&gt;</span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">p</span> <span class="pl-c1">style</span>="<span class="pl-s">color: green; font-size: 20px;</span>"<span class="pl-kos">&gt;</span>这猫可爱得一批，哈哈！<span class="pl-kos">&lt;/</span><span class="pl-ent">p</span><span class="pl-kos">&gt;</span></pre></div>
+</li>
+<li>
+<p><strong>坑提醒</strong>：</p>
+<ul>
+<li>图片路径确认正确（<code class="notranslate">cat.jpg</code> 在文件夹里，大小写一致）。</li>
+<li>图片太大？压缩到 1MB 以下。</li>
+<li>路径别用绝对路径（<code class="notranslate">C:\XXX\cat.jpg</code> 错，用 <code class="notranslate">cat.jpg</code>）。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p><strong>练习目标</strong>：改完网页应该有：</p>
+<ul>
+<li>紫色居中大标题（30px），蓝色边框绿色表头的表格，绿底白字按钮。</li>
+<li>1 个有序列表（3 项，未来计划）。</li>
+<li>表格多 1 行（第四周）。</li>
+<li>表单多 1 个邮箱输入框和 1 个性别下拉框。</li>
+<li>新图片（250px 宽），绿色 20px 描述文字。</li>
+<li>整体背景浅灰，标题副标题骚气，表单按钮醒目。</li>
+</ul>
+<p>保存，刷新浏览器，看看效果。是不是他妈的帅炸了？</p>
+<hr>
+<h2>进阶小技巧：第二天再牛逼点，装逼更彻底</h2>
+<p>虽然是第二天，但你这么猛，给你点进阶技巧，让网页更专业：</p>
+<ol>
+<li>
+<p><strong>列表嵌套，内容更有层次</strong>：</p>
+<ul>
+<li>
+<p>在 <code class="notranslate">&lt;ul&gt;</code> 或 <code class="notranslate">&lt;ol&gt;</code> 里再加列表，组织复杂内容。</p>
+</li>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight highlight-text-html-basic"><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">ul</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>爱好
+        <span class="pl-kos">&lt;</span><span class="pl-ent">ul</span><span class="pl-kos">&gt;</span>
+            <span class="pl-kos">&lt;</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>B 站，看动漫<span class="pl-kos">&lt;/</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>
+            <span class="pl-kos">&lt;</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>LOL，上分<span class="pl-kos">&lt;/</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>
+        <span class="pl-kos">&lt;/</span><span class="pl-ent">ul</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;/</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>学习计划
+        <span class="pl-kos">&lt;</span><span class="pl-ent">ul</span><span class="pl-kos">&gt;</span>
+            <span class="pl-kos">&lt;</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>HTML<span class="pl-kos">&lt;/</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>
+            <span class="pl-kos">&lt;</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>CSS<span class="pl-kos">&lt;/</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>
+        <span class="pl-kos">&lt;/</span><span class="pl-ent">ul</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;/</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>
+<span class="pl-kos">&lt;/</span><span class="pl-ent">ul</span><span class="pl-kos">&gt;</span></pre></div>
+</li>
+<li>
+<p><strong>效果</strong>：</p>
+<ul>
+<li>爱好
+<ul>
+<li>B 站，看动漫</li>
+<li>LOL，上分</li>
+</ul>
+</li>
+<li>学习计划
+<ul>
+<li>HTML</li>
+<li>CSS</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>坑提醒</strong>：</p>
+<ul>
+<li>嵌套别乱，保持层级清晰（<code class="notranslate">&lt;ul&gt;&lt;li&gt;&lt;ul&gt;&lt;li&gt;</code>）。</li>
+<li>用 Chrome F12 检查列表结构，确认没交叉。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>表格合并单元格，布局更灵活</strong>：</p>
+<ul>
+<li>
+<p>用 <code class="notranslate">colspan</code>（跨列）、<code class="notranslate">rowspan</code>（跨行）。</p>
+</li>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight highlight-text-html-basic"><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">table</span> <span class="pl-c1">border</span>="<span class="pl-s">1</span>"<span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">tr</span><span class="pl-kos">&gt;</span>
+        <span class="pl-kos">&lt;</span><span class="pl-ent">th</span> <span class="pl-c1">colspan</span>="<span class="pl-s">2</span>"<span class="pl-kos">&gt;</span>标题跨两列<span class="pl-kos">&lt;/</span><span class="pl-ent">th</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;/</span><span class="pl-ent">tr</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">tr</span><span class="pl-kos">&gt;</span>
+        <span class="pl-kos">&lt;</span><span class="pl-ent">td</span><span class="pl-kos">&gt;</span>单元格1<span class="pl-kos">&lt;/</span><span class="pl-ent">td</span><span class="pl-kos">&gt;</span>
+        <span class="pl-kos">&lt;</span><span class="pl-ent">td</span><span class="pl-kos">&gt;</span>单元格2<span class="pl-kos">&lt;/</span><span class="pl-ent">td</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;/</span><span class="pl-ent">tr</span><span class="pl-kos">&gt;</span>
+<span class="pl-kos">&lt;/</span><span class="pl-ent">table</span><span class="pl-kos">&gt;</span></pre></div>
+</li>
+<li>
+<p><strong>效果</strong>：</p>
+</li>
+</ul>
+</li>
+</ol>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>标题跨两列</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>单元格1</td>
+<td>单元格2</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+</li>
+<li>
+<p><strong>坑提醒</strong>：</p>
+<ul>
+<li>合并后，后面 <code class="notranslate">&lt;tr&gt;</code> 的 <code class="notranslate">&lt;td&gt;</code> 数量要调整（<code class="notranslate">colspan="2"</code> 少 1 个 <code class="notranslate">&lt;td&gt;</code>）。</li>
+<li>别乱合并，容易算错格子，表格会歪。</li>
+<li>用 CSS 加 <code class="notranslate">padding</code>（比如 <code class="notranslate">style="padding: 10px;"</code>）让格子内容不贴边。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>CSS 文字对齐和间距</strong>：</p>
+<ul>
+<li>
+<p>用 <code class="notranslate">text-align</code> 控制文字对齐，<code class="notranslate">margin</code> 和 <code class="notranslate">padding</code> 调间距。</p>
+</li>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight highlight-text-html-basic"><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">h2</span> <span class="pl-c1">style</span>="<span class="pl-s">text-align: center;</span>"<span class="pl-kos">&gt;</span>居中标题<span class="pl-kos">&lt;/</span><span class="pl-ent">h2</span><span class="pl-kos">&gt;</span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">p</span> <span class="pl-c1">style</span>="<span class="pl-s">margin: 20px; padding: 10px; border: 1px solid black;</span>"<span class="pl-kos">&gt;</span>有边框和间距的段落<span class="pl-kos">&lt;/</span><span class="pl-ent">p</span><span class="pl-kos">&gt;</span></pre></div>
+</li>
+<li>
+<p><strong>效果</strong>：标题居中，段落有 20px 外边距、10px 内边距、黑边框。</p>
+</li>
+<li>
+<p><strong>坑提醒</strong>：</p>
+<ul>
+<li><code class="notranslate">text-align</code> 只对块级元素（<code class="notranslate">&lt;h2&gt;</code>、<code class="notranslate">&lt;p&gt;</code>）有效，<code class="notranslate">&lt;img&gt;</code> 无效。</li>
+<li><code class="notranslate">margin</code> 是外边距，<code class="notranslate">padding</code> 是内边距，别搞混。</li>
+<li>值可以是 <code class="notranslate">10px</code>, <code class="notranslate">1em</code>, <code class="notranslate">10%</code>，但别写错单位。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>调试技巧，快速找错</strong>：</p>
+<ul>
+<li>用 Chrome F12 开发者工具：
+<ul>
+<li>“Elements”面板：看 HTML 结构，检查标签嵌套。</li>
+<li>“Styles”面板：看 CSS 样式，找失效的属性。</li>
+<li>“Console”面板：看错误提示（比如 “Unexpected token”）。</li>
+</ul>
+</li>
+<li><strong>示例</strong>：写错 <code class="notranslate">&lt;h1&gt;xxx&lt;h1&gt;</code>，Console 会报错，点错误跳转到代码行。</li>
+<li><strong>坑提醒</strong>：
+<ul>
+<li>改代码后保存（Ctrl + S），刷新浏览器（Ctrl + F5）。</li>
+<li>调试时关掉无关标签页，浏览器跑得快。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>代码格式化，保持整洁</strong>：</p>
+<ul>
+<li>VS Code 右键 &gt; “格式化文档”，自动缩进代码，清晰易读。</li>
+<li>装 <strong>Prettier</strong> 插件（扩展栏搜索 <code class="notranslate">Prettier</code>，安装），每次保存自动格式化。</li>
+<li><strong>坑提醒</strong>：
+<ul>
+<li>格式化前保存文件，不然可能丢代码。</li>
+<li>Prettier 可能跟其他插件冲突，关掉无关扩展。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>图片居中</strong>：</p>
+<ul>
+<li>
+<p>用 CSS <code class="notranslate">display: block; margin: auto;</code> 让图片居中。</p>
+</li>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight highlight-text-html-basic"><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">img</span> <span class="pl-c1">src</span>="<span class="pl-s">dog.jpg</span>" <span class="pl-c1">alt</span>="<span class="pl-s">狗</span>" <span class="pl-c1">style</span>="<span class="pl-s">display: block; margin: auto; width: 300px;</span>"<span class="pl-kos">&gt;</span></pre></div>
+</li>
+<li>
+<p><strong>坑提醒</strong>：</p>
+<ul>
+<li>必须加 <code class="notranslate">display: block</code>，否则 <code class="notranslate">margin: auto</code> 无效。</li>
+<li>确认图片宽度（<code class="notranslate">width</code>）合理，别撑爆页面。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2>总结：第二天你他妈无敌了</h2>
+<p>今天你学了：</p>
+<ul>
+<li><strong>列表</strong>：<code class="notranslate">&lt;ul&gt;</code>（无序，带圆点）、<code class="notranslate">&lt;ol&gt;</code>（有序，带数字），清晰列内容，嵌套也能搞。</li>
+<li><strong>表格</strong>：<code class="notranslate">&lt;table&gt;</code>、<code class="notranslate">&lt;tr&gt;</code>、<code class="notranslate">&lt;th&gt;</code>、<code class="notranslate">&lt;td&gt;</code>，展示数据整齐，合并单元格更灵活。</li>
+<li><strong>表单</strong>：<code class="notranslate">&lt;form&gt;</code>、<code class="notranslate">&lt;input&gt;</code>（文本、密码、下拉框）、<code class="notranslate">&lt;button&gt;</code>，收集用户输入，装逼利器。</li>
+<li><strong>基础 CSS</strong>：内联 <code class="notranslate">style</code>，改颜色（<code class="notranslate">color</code>, <code class="notranslate">background-color</code>）、字体（<code class="notranslate">font-size</code>）、边框（<code class="notranslate">border</code>）、对齐（<code class="notranslate">text-align</code>）、间距（<code class="notranslate">margin</code>, <code class="notranslate">padding</code>），网页从土鳖变骚气。</li>
+<li><strong>实战</strong>：写了带列表、表格、表单、样式的网页，背景浅灰，标题蓝色，表格黄色，表单蓝边框，按钮红底白字，图片缩放完美。</li>
+<li><strong>坑及解决</strong>：
+<ul>
+<li>列表：嵌套乱、漏闭合。</li>
+<li>表格：格子数量不对、没边框。</li>
+<li>表单：样式丑、提交无反应。</li>
+<li>CSS：语法错、值无效。</li>
+<li>调试：用 Chrome F12 找错，保存刷新确认。</li>
+</ul>
+</li>
+</ul>
+<p>你已经能搞出功能齐全、有点样子的网页，比昨天骚气十倍。HTML 还有更多花样（语义标签、外部 CSS、响应式布局），但第二天稳住这些，你已经吊打 95% 的小白。</p>
+<p><strong>下一步建议</strong>：</p>
+<ul>
+<li><strong>多练</strong>：把列表、表格、表单代码多写几遍，熟到飞起。</li>
+<li><strong>试 CSS</strong>：玩更多属性（<code class="notranslate">border-radius</code> 圆角、<code class="notranslate">box-shadow</code> 阴影），调出骚气效果。</li>
+<li><strong>学外部 CSS</strong>：明天学怎么把 CSS 写到单独文件，代码更整洁，维护更爽。</li>
+<li><strong>找资源</strong>：去 Unsplash（<code class="notranslate">unsplash.com</code>）下免费高清图片，练 <code class="notranslate">&lt;img&gt;</code> 标签。</li>
+<li><strong>做项目</strong>：试着做个个人主页，整合 HTML 和 CSS，装逼到朋友圈。</li>
+</ul>
+<p><strong>鼓励一下</strong>：操，兄弟，第二天你干得太他妈无敌了！网页已经有点大佬范儿了，继续冲，明天更骚更牛逼！</p></div>
+<div style="font-size:small;margin-top:8px;float:right;"></div>
+
+<button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
+<div class="comments" id="comments"></div>
+
+</div>
+    <div id="footer"><div id="footer1">Copyright © <span id="copyrightYear"></span> <a href="https://ikdxhz.github.io">ikdxhz的博客</a></div>
+<div id="footer2">
+    <span id="runday"></span><span>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a></span>
+</div>
+
+<script>
+var now=new Date();
+document.getElementById("copyrightYear").innerHTML=now.getFullYear();
+
+if(""!=""){
+    var startSite=new Date("");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("runday").innerHTML="网站运行"+diffDay+"天"+" • ";
+}
+</script></div>
+</body>
+<script>
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z', 'copy': 'M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z', 'check': 'M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z'};
+var utterancesLoad=0;
+
+let themeSettings={
+    "dark": ["dark","moon","#00f0ff","dark-blue"],
+    "light": ["light","sun","#ff5000","github-light"],
+    "auto": ["auto","sync","","preferred-color-scheme"]
+};
+function changeTheme(mode, icon, color, utheme){
+    document.documentElement.setAttribute("data-color-mode",mode);
+    document.getElementById("themeSwitch").setAttribute("d",value=IconList[icon]);
+    document.getElementById("themeSwitch").parentNode.style.color=color;
+    if(utterancesLoad==1){utterancesTheme(utheme);}
+}
+function modeSwitch(){
+    let currentMode=document.documentElement.getAttribute('data-color-mode');
+    let newMode = currentMode === "light" ? "dark" : currentMode === "dark" ? "auto" : "light";
+    localStorage.setItem("meek_theme", newMode);
+    if(themeSettings[newMode]){
+        changeTheme(...themeSettings[newMode]);
+    }
+}
+function utterancesTheme(theme){
+    const message={type:'set-theme',theme: theme};
+    const iframe=document.getElementsByClassName('utterances-frame')[0];
+    iframe.contentWindow.postMessage(message,'https://utteranc.es');
+}
+if(themeSettings[theme]){changeTheme(...themeSettings[theme]);}
+console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n","padding:5px 0;background:#02d81d;color:#fff");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
+
+
+
+function openComments(){
+    cm=document.getElementById("comments");
+    cmButton=document.getElementById("cmButton");
+    cmButton.innerHTML="loading";
+    span=document.createElement("span");
+    span.setAttribute("class","AnimatedEllipsis");
+    cmButton.appendChild(span);
+
+    script=document.createElement("script");
+    script.setAttribute("src","https://utteranc.es/client.js");
+    script.setAttribute("repo","ikdxhz/ikdxhz.github.io");
+    script.setAttribute("issue-term","title");
+    
+    if(localStorage.getItem("meek_theme")=="dark"){script.setAttribute("theme","dark-blue");}
+    else if(localStorage.getItem("meek_theme")=="light") {script.setAttribute("theme","github-light");}
+    else{script.setAttribute("theme","preferred-color-scheme");}
+    
+    script.setAttribute("crossorigin","anonymous");
+    script.setAttribute("async","");
+    cm.appendChild(script);
+
+    int=self.setInterval("iFrameLoading()",200);
+}
+
+function iFrameLoading(){
+    var utterances=document.getElementsByClassName('utterances');
+    if(utterances.length==1){
+        if(utterances[0].style.height!=""){
+            utterancesLoad=1;
+            int=window.clearInterval(int);
+            document.getElementById("cmButton").style.display="none";
+            console.log("utterances Load OK");
+        }
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const createClipboardHTML = (codeContent, additionalClasses = '') => `
+        <pre class="notranslate"><code class="notranslate">${codeContent}</code></pre>
+        <div class="clipboard-container position-absolute right-0 top-0 ${additionalClasses}">
+            <clipboard-copy class="ClipboardButton btn m-2 p-0" role="button" style="display: inherit;">
+                <svg height="16" width="16" class="octicon octicon-copy m-2"><path d="${IconList["copy"]}"></path></svg>
+                <svg height="16" width="16" class="octicon octicon-check color-fg-success m-2 d-none"><path d="${IconList["check"]}"></path></svg>
+            </clipboard-copy>
+            <div class="copy-feedback">Copied!</div>
+        </div>
+    `;
+
+    const handleCodeElements = (selector = '') => {
+        document.querySelectorAll(selector).forEach(codeElement => {
+            const codeContent = codeElement.innerHTML;
+            const newStructure = document.createElement('div');
+            newStructure.className = 'snippet-clipboard-content position-relative overflow-auto';
+            newStructure.innerHTML = createClipboardHTML(codeContent);
+
+            const parentElement = codeElement.parentElement;
+            if (selector.includes('highlight')) {
+                parentElement.insertBefore(newStructure, codeElement.nextSibling);
+                parentElement.removeChild(codeElement);
+            } else {
+                parentElement.parentElement.replaceChild(newStructure, parentElement);
+            }
+        });
+    };
+
+    handleCodeElements('pre.notranslate > code.notranslate');
+    handleCodeElements('div.highlight > pre.notranslate');
+
+    let currentFeedback = null;
+    document.querySelectorAll('clipboard-copy').forEach(copyButton => {
+        copyButton.addEventListener('click', () => {
+            const codeContent = copyButton.closest('.snippet-clipboard-content').innerText;
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = codeContent;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempTextArea);
+
+            const copyIcon = copyButton.querySelector('.octicon-copy');
+            const checkIcon = copyButton.querySelector('.octicon-check');
+            const copyFeedback = copyButton.nextElementSibling;
+
+            if (currentFeedback && currentFeedback !== copyFeedback) {currentFeedback.style.display = 'none';}
+            currentFeedback = copyFeedback;
+
+            copyIcon.classList.add('d-none');
+            checkIcon.classList.remove('d-none');
+            copyFeedback.style.display = 'block';
+            copyButton.style.borderColor = 'var(--color-success-fg)';
+
+            setTimeout(() => {
+                copyIcon.classList.remove('d-none');
+                checkIcon.classList.add('d-none');
+                copyFeedback.style.display = 'none';
+                copyButton.style.borderColor = '';
+            }, 2000);
+        });
+    });
+});
+
+</script>
+
+
+</html>
