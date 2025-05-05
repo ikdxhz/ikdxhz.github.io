@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>加载中</title>
+    <title>你想要的，这里都有...</title>
     <style>
         body {
             display: flex;
@@ -15,6 +15,7 @@
             color: #fff;
             text-align: center;
             position: relative;
+            overflow: hidden;
         }
         .loading-container {
             background: rgba(0, 0, 0, 0.6);
@@ -88,20 +89,23 @@
             }
         }
         .watermark {
-            position: fixed;
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             pointer-events: none; /* 防止水印影响交互 */
             display: flex;
-            justify-content: center;
-            align-items: center;
             flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            z-index: 1000; /* 确保水印在最上层 */
+        }
+        .watermark div {
             font-size: 24px;
             font-weight: bold;
             color: rgba(255, 255, 255, 0.2);
-            z-index: 1000; /* 确保水印在最上层 */
+            transform: rotate(-20deg); /* 斜向显示 */
         }
         .footer {
             position: absolute;
@@ -115,7 +119,7 @@
 </head>
 <body>
     <div class="loading-container">
-        <div class="loading-text">正在加载中...</div>
+        <div class="loading-text">精彩正在加载...</div>
         <div class="loading-icon" id="loadingIcon"></div>
         <div class="progress-bar">
             <div class="progress-bar-fill" id="progressBar"></div>
@@ -128,7 +132,7 @@
         </svg>
     </div>
     <div class="watermark">
-        <div>免费网站，禁止倒卖</div>
+        <!-- 动态生成的水印文字 -->
     </div>
     <div class="footer">仅供娱乐，不要当真</div>
     <script>
@@ -137,13 +141,14 @@
         const message = document.getElementById('message');
         const loadingIcon = document.getElementById('loadingIcon');
         const checkmark = document.querySelector('.checkmark');
+        const watermark = document.querySelector('.watermark');
 
         let progress = 0;
         let startTime = Date.now();
         let hasRedirected = false; // 标志变量，防止重复跳转
 
-        // 随机生成跳转时间（5到10秒之间）
-        const randomDuration = Math.floor(Math.random() * 5000) + 5000; // 5000到10000毫秒
+        // 随机生成跳转时间（15到20秒之间）
+        const randomDuration = Math.floor(Math.random() * 5000) + 15000; // 15000到20000毫秒
 
         // 随机生成渐变背景颜色
         function getRandomColor() {
@@ -158,6 +163,22 @@
         const color1 = getRandomColor();
         const color2 = getRandomColor();
         document.body.style.background = `linear-gradient(135deg, ${color1}, ${color2})`;
+
+        // 动态生成满屏水印文字
+        function generateWatermark() {
+            const numWatermarks = 20; // 水印数量
+            for (let i = 0; i < numWatermarks; i++) {
+                const div = document.createElement('div');
+                div.textContent = '免费网站，禁止倒卖';
+                div.style.position = 'absolute';
+                div.style.left = `${Math.random() * 100}%`;
+                div.style.top = `${Math.random() * 100}%`;
+                div.style.transform = `rotate(${Math.random() * 30 - 15}deg)`; // 随机旋转角度
+                watermark.appendChild(div);
+            }
+        }
+
+        generateWatermark();
 
         function updateProgress() {
             if (hasRedirected) return; // 如果已经跳转，直接退出
@@ -185,12 +206,12 @@
 
         updateProgress();
 
-        // 如果10秒后仍未跳转，提示用户
+        // 如果20秒后仍未跳转，提示用户
         setTimeout(() => {
             if (!hasRedirected) {
                 message.textContent = "加载失败，请刷新或稍后重试。";
             }
-        }, 10000);
+        }, 20000);
     </script>
 </body>
 </html>
