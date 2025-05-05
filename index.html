@@ -14,6 +14,7 @@
             font-family: "Arial", sans-serif;
             color: #fff;
             text-align: center;
+            position: relative;
         }
         .loading-container {
             background: rgba(0, 0, 0, 0.6);
@@ -33,6 +34,7 @@
             height: 60px;
             margin: 0 auto 20px;
             animation: spin 1s linear infinite;
+            transition: border-color 0.5s ease-in-out;
         }
         @keyframes spin {
             0% { transform: rotate(0deg); }
@@ -59,22 +61,82 @@
             font-size: 18px;
             margin-top: 20px;
         }
+        .checkmark {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto;
+            display: none;
+        }
+        .checkmark__circle {
+            stroke: #fff;
+            stroke-width: 4;
+            stroke-dasharray: 166;
+            stroke-dashoffset: 166;
+            stroke-linecap: round;
+            animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+        }
+        .checkmark__check {
+            stroke: #fff;
+            stroke-width: 4;
+            stroke-dasharray: 48;
+            stroke-dashoffset: 48;
+            animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+        }
+        @keyframes stroke {
+            100% {
+                stroke-dashoffset: 0;
+            }
+        }
+        .watermark {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* 防止水印影响交互 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            font-size: 24px;
+            font-weight: bold;
+            color: rgba(255, 255, 255, 0.2);
+            z-index: 1000; /* 确保水印在最上层 */
+        }
+        .footer {
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+            text-align: center;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+        }
     </style>
 </head>
 <body>
     <div class="loading-container">
         <div class="loading-text">正在加载中...</div>
-        <div class="loading-icon"></div>
+        <div class="loading-icon" id="loadingIcon"></div>
         <div class="progress-bar">
             <div class="progress-bar-fill" id="progressBar"></div>
         </div>
         <div class="progress-percentage" id="progressPercentage">0.00%</div>
         <div class="message" id="message"></div>
+        <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+            <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
+            <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+        </svg>
     </div>
+    <div class="watermark">
+        <div>免费网站，禁止倒卖</div>
+    </div>
+    <div class="footer">仅供娱乐，不要当真</div>
     <script>
         const progressBar = document.getElementById('progressBar');
         const progressPercentage = document.getElementById('progressPercentage');
         const message = document.getElementById('message');
+        const loadingIcon = document.getElementById('loadingIcon');
+        const checkmark = document.querySelector('.checkmark');
 
         let progress = 0;
         let startTime = Date.now();
@@ -105,6 +167,8 @@
                 // 如果达到随机跳转时间，则直接跳转
                 hasRedirected = true; // 标记已经跳转
                 message.textContent = "加载完成，正在跳转...";
+                loadingIcon.style.display = 'none'; // 隐藏加载图标
+                checkmark.style.display = 'block'; // 显示勾图标
                 setTimeout(() => {
                     window.location.href = "https://ikdxhz.top";
                 }, 1000); // 延迟1秒后跳转，让用户看到“加载完成”的提示
