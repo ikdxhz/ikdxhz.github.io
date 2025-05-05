@@ -80,8 +80,8 @@
         let startTime = Date.now();
         let hasRedirected = false; // 标志变量，防止重复跳转
 
-        // 随机生成跳转时间（2到5秒之间）
-        const randomDuration = Math.floor(Math.random() * 3000) + 2000; // 2000到5000毫秒
+        // 随机生成跳转时间（5到10秒之间）
+        const randomDuration = Math.floor(Math.random() * 5000) + 5000; // 5000到10000毫秒
 
         // 随机生成渐变背景颜色
         function getRandomColor() {
@@ -121,12 +121,12 @@
 
         updateProgress();
 
-        // 如果5秒后仍未跳转，提示用户
+        // 如果10秒后仍未跳转，提示用户
         setTimeout(() => {
             if (!hasRedirected) {
                 message.textContent = "加载失败，请刷新或稍后重试。";
             }
-        }, 5000);
+        }, 10000);
     </script>
 </body>
 </html>
