@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>你想要的，这里都有...</title>
+    <title>今晚的禁忌，你敢不敢碰？</title>
     <style>
         body {
             display: flex;
@@ -16,26 +16,44 @@
             text-align: center;
             position: relative;
             overflow: hidden;
+            background: linear-gradient(135deg, #ff2e63, #590086);
+            animation: gradientShift 10s ease infinite;
+        }
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
         .loading-container {
-            background: rgba(0, 0, 0, 0.6);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            background: rgba(0, 0, 0, 0.8);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(255, 105, 180, 0.7);
+            animation: scalePulse 3s ease-in-out infinite;
+        }
+        @keyframes scalePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
         }
         .loading-text {
-            font-size: 24px;
+            font-size: 30px;
             margin-bottom: 20px;
+            font-weight: bold;
+            text-shadow: 0 0 10px #ff69b4, 0 0 20px #ff69b4;
+            animation: textScale 2s ease-in-out infinite;
+        }
+        @keyframes textScale {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
         }
         .loading-icon {
             border: 5px solid rgba(255, 255, 255, 0.3);
-            border-top-color: #fff;
+            border-top-color: #ff69b4;
             border-radius: 50%;
             width: 60px;
             height: 60px;
             margin: 0 auto 20px;
             animation: spin 1s linear infinite;
-            transition: border-color 0.5s ease-in-out;
         }
         @keyframes spin {
             0% { transform: rotate(0deg); }
@@ -50,17 +68,37 @@
         }
         .progress-bar-fill {
             height: 10px;
-            background: linear-gradient(270deg, #ff7e5f, #feb47b);
+            background: linear-gradient(270deg, #ff69b4, #ff2e63);
             width: 0%;
             border-radius: 10px;
         }
         .progress-percentage {
             font-size: 18px;
             font-weight: bold;
+            color: #ff69b4;
+            animation: scalePulse 2.5s ease-in-out infinite;
         }
         .message {
-            font-size: 18px;
+            font-size: 20px;
             margin-top: 20px;
+            color: #ffd1dc;
+            text-shadow: 0 0 5px #ff69b4;
+            animation: messageScale 2.2s ease-in-out infinite;
+        }
+        @keyframes messageScale {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        .teaser {
+            font-size: 16px;
+            margin-top: 15px;
+            color: #ffccff;
+            text-shadow: 0 0 5px #ff69b4;
+            animation: fadeInOut 5s ease-in-out infinite;
+        }
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
         }
         .checkmark {
             width: 60px;
@@ -69,7 +107,7 @@
             display: none;
         }
         .checkmark__circle {
-            stroke: #fff;
+            stroke: #ff69b4;
             stroke-width: 4;
             stroke-dasharray: 166;
             stroke-dashoffset: 166;
@@ -94,18 +132,20 @@
             left: 0;
             width: 100%;
             height: 100%;
-            pointer-events: none; /* 防止水印影响交互 */
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-            align-items: center;
-            z-index: 1000; /* 确保水印在最上层 */
+            pointer-events: none;
+            z-index: 1000;
         }
         .watermark div {
-            font-size: 24px;
+            font-size: 26px;
             font-weight: bold;
-            color: rgba(255, 255, 255, 0.2);
-            transform: rotate(-20deg); /* 斜向显示 */
+            color: rgba(255, 182, 193, 0.4);
+            transform: rotate(-20deg);
+            animation: watermarkScale 3s ease-in-out infinite;
+            position: absolute;
+        }
+        @keyframes watermarkScale {
+            0%, 100% { transform: scale(1) rotate(-20deg); }
+            50% { transform: scale(1.2) rotate(-20deg); }
         }
         .footer {
             position: absolute;
@@ -113,19 +153,98 @@
             width: 100%;
             text-align: center;
             font-size: 14px;
-            color: rgba(255, 255, 255, 0.6);
+            color: rgba(255, 182, 193, 0.6);
+            animation: scalePulse 2.8s ease-in-out infinite;
+        }
+        /* 粒子效果 */
+        .particle {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background: #ff69b4;
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: float 8s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0); opacity: 0.5; }
+            50% { transform: translateY(-100vh); opacity: 0; }
+            100% { transform: translateY(0); opacity: 0.5; }
+        }
+        /* 弹窗样式 */
+        .modal {
+            display: block;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        .modal-content {
+            background: linear-gradient(135deg, #ff2e63, #590086);
+            margin: 10% auto;
+            padding: 30px;
+            border-radius: 15px;
+            width: 85%;
+            max-width: 600px;
+            box-shadow: 0 0 20px rgba(255, 105, 180, 0.7);
+            text-align: left;
+            color: #fff;
+            animation: scalePulse 2s ease-in-out infinite;
+        }
+        .modal-content h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-shadow: 0 0 5px #ff69b4;
+            text-align: center;
+        }
+        .modal-content p {
+            font-size: 16px;
+            margin-bottom: 15px;
+            line-height: 1.5;
+            text-shadow: 0 0 3px #ff69b4;
+        }
+        .modal-content .highlight {
+            font-weight: bold;
+            color: #ffccff;
+            text-shadow: 0 0 5px #ff69b4;
+        }
+        .modal-content button {
+            background: #ff69b4;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 10px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto 0;
+            transition: transform 0.3s;
+        }
+        .modal-content button:hover {
+            transform: scale(1.1);
+        }
+        .modal-content button:disabled {
+            background: #666;
+            cursor: not-allowed;
+        }
+        .close {
+            display: none;
         }
     </style>
 </head>
 <body>
     <div class="loading-container">
-        <div class="loading-text">精彩正在加载...</div>
+        <div class="loading-text" id="loadingText"></div>
         <div class="loading-icon" id="loadingIcon"></div>
         <div class="progress-bar">
             <div class="progress-bar-fill" id="progressBar"></div>
         </div>
         <div class="progress-percentage" id="progressPercentage">0.00%</div>
         <div class="message" id="message"></div>
+        <div class="teaser" id="teaser"></div>
         <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
             <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
             <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
@@ -134,84 +253,189 @@
     <div class="watermark">
         <!-- 动态生成的水印文字 -->
     </div>
-    <div class="footer">仅供娱乐，不要当真</div>
+    <div class="footer">仅限成人娱乐，合法合规</div>
+    <!-- 粒子容器 -->
+    <div id="particleContainer"></div>
+    <!-- 弹窗 -->
+    <div id="disclaimerModal" class="modal">
+        <div class="modal-content">
+            <h2>免责声明</h2>
+            <p>欢迎访问本网站。本平台致力于提供合法的成人娱乐内容，严格遵守中华人民共和国相关法律法规及国际规范。所有内容仅面向18岁及以上的成年用户，旨在为用户提供安全、合规的娱乐体验。</p>
+            <p>本网站内容包括但不限于文字、图像及互动功能，均经过严格审核，确保不涉及任何违法、淫秽或有害信息。用户在使用本网站时，应自行承担相关责任，并确保遵守所在地区的法律法规。如您未满18岁，或所在地区禁止访问此类内容，请立即离开。</p>
+            <p><span class="highlight">特别声明：本网站可能引导用户至第三方网站（如 ikdxhz.top），该网站与本平台无任何关联。本平台不对第三方网站的内容、运营或任何相关后果承担责任。请用户自行判断并承担访问第三方网站的风险。</span></p>
+            <p>本网站不对用户因访问或使用本平台而可能产生的任何后果承担责任，包括但不限于数据丢失、隐私泄露或其他间接损失。请确认您已了解并同意本声明，方可继续访问。如有任何疑问，请联系我们的客服团队。</p>
+            <button id="confirmButton" disabled>请阅读5秒后确认...</button>
+        </div>
+    </div>
     <script>
         const progressBar = document.getElementById('progressBar');
         const progressPercentage = document.getElementById('progressPercentage');
         const message = document.getElementById('message');
         const loadingIcon = document.getElementById('loadingIcon');
+        const loadingText = document.getElementById('loadingText');
+        const teaser = document.getElementById('teaser');
         const checkmark = document.querySelector('.checkmark');
         const watermark = document.querySelector('.watermark');
+        const modal = document.getElementById('disclaimerModal');
+        const confirmButton = document.getElementById('confirmButton');
+        const particleContainer = document.getElementById('particleContainer');
 
         let progress = 0;
         let startTime = Date.now();
-        let hasRedirected = false; // 标志变量，防止重复跳转
+        let hasRedirected = false;
+        let lastMessageProgress = -10;
 
-        // 随机生成跳转时间（15到20秒之间）
-        const randomDuration = Math.floor(Math.random() * 5000) + 15000; // 15000到20000毫秒
+        // 随机跳转时间（25到30秒）
+        const randomDuration = Math.floor(Math.random() * 5000) + 25000;
 
-        // 随机生成渐变背景颜色
-        function getRandomColor() {
-            const letters = '0123456789ABCDEF';
-            let color = '#';
-            for (let i = 0; i < 6; i++) {
-                color += letters[Math.floor(Math.random() * 16)];
-            }
-            return color;
-        }
+        // 随机黄话池
+        const loadingPhrases = [
+            '今晚的狂热，你敢不敢追？',
+            '深夜的挑逗，点燃你的瘾...',
+            '禁忌的猎奇，准备开撩啦！',
+            '你的小癖好，马上要暴露！',
+            '心跳爆棚，刺激来袭！',
+            '撩骚的夜色，敢不敢来？',
+            '大胆的诱惑，挑战你的底线！',
+            '私密的狂欢，等你来解锁！',
+            '今晚的疯狂，你能扛住吗？',
+            '魅惑的游戏，等你来翻牌！',
+            '深夜的秘密，撩到你心动！',
+            '禁区的快感，马上开冲！'
+        ];
+        const messagePhrases = [
+            '正在挑逗你的小神经...',
+            '心动到炸裂，快撑不住了！',
+            '禁忌的门缝，已经裂到爆！',
+            '你的欲望，火热加载中！',
+            '别矜持，狂野才刚开场！',
+            '猎奇的快感，离你超近！',
+            '心跳到爆，刺激要来了！',
+            '深夜的魅惑，挡不住了吧？',
+            '最后的秘密，准备撕开它！',
+            '骚动的夜，high到飞起！',
+            '你的好奇心，已经彻底沦陷！',
+            '禁区的边缘，敢不敢跨？',
+            '心痒痒了？马上更刺激！',
+            '撩到你腿软，等着瞧吧！'
+        ];
+        const watermarkPhrases = [
+            '私密猎奇，禁止偷窥！',
+            '深夜狂热，合法合规',
+            '心跳挑逗，点击就爆',
+            '禁忌快感，仅限夜猫子',
+            '撩人秘密，禁止外传',
+            '大胆冒险，安全第一',
+            '深夜狂欢，合法享受',
+            '魅惑体验，禁止倒卖',
+            '你的欲望，夜色独享',
+            '猎奇时刻，成人专属',
+            '撩骚夜色，合法沉沦'
+        ];
+        const teaserPhrases = [
+            '想知道今晚有多野？等一下就揭晓！',
+            '深夜的秘密，只给大胆的人...',
+            '你的心动指数，已经爆表了！',
+            '禁忌的诱惑，准备好被撩了吗？',
+            '小心，接下来的刺激会上瘾！',
+            '今晚的冒险，绝对让你心跳加速！',
+            '撩骚的夜，还差一步就炸裂！',
+            '你敢不敢，解锁更深的秘密？'
+        ];
 
-        const color1 = getRandomColor();
-        const color2 = getRandomColor();
-        document.body.style.background = `linear-gradient(135deg, ${color1}, ${color2})`;
+        // 随机选择初始加载文本
+        loadingText.textContent = loadingPhrases[Math.floor(Math.random() * loadingPhrases.length)];
 
-        // 动态生成满屏水印文字
+        // 动态生成水印
         function generateWatermark() {
-            const numWatermarks = 20; // 水印数量
+            const numWatermarks = 20;
             for (let i = 0; i < numWatermarks; i++) {
                 const div = document.createElement('div');
-                div.textContent = '免费网站，禁止倒卖';
+                div.textContent = watermarkPhrases[Math.floor(Math.random() * watermarkPhrases.length)];
                 div.style.position = 'absolute';
                 div.style.left = `${Math.random() * 100}%`;
                 div.style.top = `${Math.random() * 100}%`;
-                div.style.transform = `rotate(${Math.random() * 30 - 15}deg)`; // 随机旋转角度
+                div.style.transform = `rotate(${Math.random() * 30 - 15}deg)`;
                 watermark.appendChild(div);
             }
         }
 
         generateWatermark();
 
+        // 生成粒子
+        function generateParticles() {
+            const numParticles = 20;
+            for (let i = 0; i < numParticles; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.animationDelay = `${Math.random() * 8}s`;
+                particleContainer.appendChild(particle);
+            }
+        }
+
+        generateParticles();
+
+        // 动态更新Teaser文本
+        function updateTeaser() {
+            if (hasRedirected) return;
+            teaser.textContent = teaserPhrases[Math.floor(Math.random() * teaserPhrases.length)];
+            setTimeout(updateTeaser, 5000);
+        }
+
+        updateTeaser();
+
+        // 5秒后启用确认按钮
+        setTimeout(() => {
+            confirmButton.disabled = false;
+            confirmButton.textContent = '我已满18岁，同意并继续';
+        }, 5000);
+
+        // 弹窗关闭
+        confirmButton.onclick = function() {
+            modal.style.display = 'none';
+        };
+
         function updateProgress() {
-            if (hasRedirected) return; // 如果已经跳转，直接退出
+            if (hasRedirected) return;
 
             const elapsedTime = Date.now() - startTime;
             if (elapsedTime >= randomDuration) {
-                // 如果达到随机跳转时间，则直接跳转
-                hasRedirected = true; // 标记已经跳转
-                message.textContent = "加载完成，正在跳转...";
-                loadingIcon.style.display = 'none'; // 隐藏加载图标
-                checkmark.style.display = 'block'; // 显示勾图标
+                hasRedirected = true;
+                message.textContent = '禁忌已解锁，准备开撩！';
+                loadingIcon.style.display = 'none';
+                checkmark.style.display = 'block';
                 setTimeout(() => {
-                    window.location.href = "https://ikdxhz.top";
-                }, 1000); // 延迟1秒后跳转，让用户看到“加载完成”的提示
+                    window.location.href = 'https://ikdxhz.top';
+                }, 1000);
                 return;
             }
 
-            // 模拟时快时慢的加载效果
+            // 模拟加载效果
             progress = Math.min(100, Math.pow(elapsedTime / randomDuration, 2) * 100);
             progressBar.style.width = `${progress.toFixed(2)}%`;
             progressPercentage.textContent = `${progress.toFixed(2)}%`;
 
+            // 每10%更新一次消息
+            if (Math.floor(progress / 10) > Math.floor(lastMessageProgress / 10)) {
+                message.textContent = messagePhrases[Math.floor(Math.random() * messagePhrases.length)];
+                lastMessageProgress = progress;
+            }
+
             requestAnimationFrame(updateProgress);
         }
 
-        updateProgress();
+        // 只有在关闭弹窗后才开始加载
+        confirmButton.addEventListener('click', () => {
+            updateProgress();
+        });
 
-        // 如果20秒后仍未跳转，提示用户
+        // 错误处理
         setTimeout(() => {
             if (!hasRedirected) {
-                message.textContent = "加载失败，请刷新或稍后重试。";
+                message.textContent = '卡住了？刷新再撩一次！';
             }
-        }, 20000);
+        }, 35000);
     </script>
 </body>
 </html>
