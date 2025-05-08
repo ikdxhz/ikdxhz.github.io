@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>今晚的禁忌，你敢不敢碰？</title>
+    <title>今晚的冒险，等你来嗨！</title>
     <style>
         body {
             display: flex;
@@ -89,7 +89,7 @@
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.1); }
         }
-        .teaser {
+        .slogan {
             font-size: 16px;
             margin-top: 15px;
             color: #ffccff;
@@ -244,7 +244,7 @@
         </div>
         <div class="progress-percentage" id="progressPercentage">0.00%</div>
         <div class="message" id="message"></div>
-        <div class="teaser" id="teaser"></div>
+        <div class="slogan" id="slogan"></div>
         <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
             <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
             <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
@@ -253,17 +253,17 @@
     <div class="watermark">
         <!-- 动态生成的水印文字 -->
     </div>
-    <div class="footer">仅限成人娱乐，合法合规</div>
+    <div class="footer">仅限合法娱乐，安全合规</div>
     <!-- 粒子容器 -->
     <div id="particleContainer"></div>
     <!-- 弹窗 -->
     <div id="disclaimerModal" class="modal">
         <div class="modal-content">
             <h2>免责声明</h2>
-            <p>欢迎访问本网站。本平台致力于提供合法的娱乐内容，严格遵守中华人民共和国相关法律法规及国际规范。所有内容仅面向18岁及以上的成年用户，旨在为用户提供安全、合规的娱乐体验。</p>
-            <p>本网站内容包括但不限于文字、图像及互动功能，均经过严格审核，确保不涉及任何违法、淫秽或有害信息。用户在使用本网站时，应自行承担相关责任，并确保遵守所在地区的法律法规。如您未满18岁，或所在地区禁止访问此类内容，请立即离开。</p>
-            <p><span class="highlight">特别声明：本网站可能引导用户至第三方网站（如 ikdxhz.top），该网站与本平台无任何关联，且不提供成人娱乐内容，系合法合规的独立平台。本平台的内容及风格与第三方网站无关，本平台不对其内容或运营承担任何责任。请用户自行判断并访问。</span></p>
-            <p>本网站不对用户因访问或使用本平台而可能产生的任何后果承担责任，包括但不限于数据丢失、隐私泄露或其他间接损失。请确认您已了解并同意本声明，方可继续访问。如有任何疑问，请联系我们的客服团队。</p>
+            <p>欢迎体验本网站。本平台提供合法、活泼的互动娱乐内容，严格遵守中华人民共和国相关法律法规及国际规范，适合所有年龄段用户，旨在带来轻松有趣的数字体验。</p>
+            <p>本网站内容包括文字、图像及互动功能，均经过严格审核，确保不涉及任何违法或不当信息。用户在使用本网站时，应遵守所在地区的法律法规。如您所在地区限制访问此类内容，请立即离开。</p>
+            <p><span class="highlight">特别声明：本网站可能引导用户至第三方网站（如 ikdxhz.top），该网站与本平台无任何关联，且不提供成人娱乐内容，系合法合规的独立平台。本平台的风格与内容与第三方网站完全无关，本平台不对其内容或运营承担任何责任。请用户自行判断并访问。</span></p>
+            <p>本网站不对用户因访问或使用本平台而可能产生的任何后果承担责任，包括但不限于数据丢失或其他间接损失。请确认您已了解并同意本声明，方可继续。如有疑问，请联系我们的客服团队。</p>
             <button id="confirmButton" disabled>请阅读5秒后确认...</button>
         </div>
     </div>
@@ -273,7 +273,7 @@
         const message = document.getElementById('message');
         const loadingIcon = document.getElementById('loadingIcon');
         const loadingText = document.getElementById('loadingText');
-        const teaser = document.getElementById('teaser');
+        const slogan = document.getElementById('slogan');
         const checkmark = document.querySelector('.checkmark');
         const watermark = document.querySelector('.watermark');
         const modal = document.getElementById('disclaimerModal');
@@ -288,59 +288,59 @@
         // 随机跳转时间（25到30秒）
         const randomDuration = Math.floor(Math.random() * 5000) + 25000;
 
-        // 随机黄话池
+        // 活泼吸引人的文本池
         const loadingPhrases = [
-            '今晚的狂热，你敢不敢追？',
-            '深夜的挑逗，点燃你的瘾...',
-            '禁忌的猎奇，准备开撩啦！',
-            '你的小癖好，马上要暴露！',
-            '心跳爆棚，刺激来袭！',
-            '撩骚的夜色，敢不敢来？',
-            '大胆的诱惑，挑战你的底线！',
-            '私密的狂欢，等你来解锁！',
-            '今晚的疯狂，你能扛住吗？',
-            '魅惑的游戏，等你来翻牌！',
-            '深夜的秘密，撩到你心动！',
-            '禁区的快感，马上开冲！'
+            '今晚的冒险，等你来嗨！',
+            '超燃的旅程，马上开冲！',
+            '心跳加速，惊喜来袭！',
+            '你的好奇心，准备炸裂！',
+            '嗨翻全场，敢不敢来？',
+            '青春的火花，点燃夜空！',
+            '冒险的召唤，你接不接？',
+            '欢乐的派对，马上开场！',
+            '超酷的挑战，等你来战！',
+            '梦想的舞台，准备起飞！',
+            '活力全开，冲向终点！',
+            '惊喜连连，下一秒揭晓！'
         ];
         const messagePhrases = [
-            '正在挑逗你的小神经...',
-            '心动到炸裂，快撑不住了！',
-            '禁忌的门缝，已经裂到爆！',
-            '你的欲望，火热加载中！',
-            '别矜持，狂野才刚开场！',
-            '猎奇的快感，离你超近！',
-            '心跳到爆，刺激要来了！',
-            '深夜的魅惑，挡不住了吧？',
-            '最后的秘密，准备撕开它！',
-            '骚动的夜，high到飞起！',
-            '你的好奇心，已经彻底沦陷！',
-            '禁区的边缘，敢不敢跨？',
-            '心痒痒了？马上更刺激！',
-            '撩到你腿软，等着瞧吧！'
+            '正在点燃你的冒险魂...',
+            '心动指数，飙升到顶！',
+            '惊喜的门，已经裂开！',
+            '你的热情，加载满格！',
+            '别犹豫，欢乐才开始！',
+            '超燃的时刻，越来越近！',
+            '心跳加速，冒险来了！',
+            '青春的节奏，挡不住啦！',
+            '最后的惊喜，准备开箱！',
+            '嗨翻全场，马上炸裂！',
+            '你的好奇，已经无敌了！',
+            '冒险的边缘，敢不敢跨？',
+            '活力加载中，准备起飞！',
+            '欢乐到爆，等着瞧吧！'
         ];
         const watermarkPhrases = [
-            '私密猎奇，禁止偷窥！',
-            '深夜狂热，合法合规',
-            '心跳挑逗，点击就爆',
-            '禁忌快感，仅限夜猫子',
-            '撩人秘密，禁止外传',
-            '大胆冒险，安全第一',
-            '深夜狂欢，合法享受',
-            '魅惑体验，禁止倒卖',
-            '你的欲望，夜色独享',
-            '猎奇时刻，成人专属',
-            '撩骚夜色，合法沉沦'
+            '活力冒险，禁止偷看！',
+            '青春嗨翻，合法合规',
+            '心跳挑战，点击就燃',
+            '欢乐时刻，仅限冒险家',
+            '超酷秘密，禁止外传',
+            '大胆探索，安全第一',
+            '嗨翻夜空，合法体验',
+            '青春体验，禁止倒卖',
+            '你的热情，活力独享',
+            '冒险时刻，嗨到飞起',
+            '欢乐夜色，合法畅玩'
         ];
-        const teaserPhrases = [
-            '想知道今晚有多野？等一下就揭晓！',
-            '深夜的秘密，只给大胆的人...',
-            '你的心动指数，已经爆表了！',
-            '禁忌的诱惑，准备好被撩了吗？',
-            '小心，接下来的刺激会上瘾！',
-            '今晚的冒险，绝对让你心跳加速！',
-            '撩骚的夜，还差一步就炸裂！',
-            '你敢不敢，解锁更深的秘密？'
+        const sloganPhrases = [
+            '想知道今晚有多燃？马上揭晓！',
+            '青春的秘密，只给勇敢的人！',
+            '你的冒险指数，已经爆表！',
+            '欢乐的挑战，准备好开冲了吗？',
+            '小心，接下来的惊喜超嗨！',
+            '今晚的冒险，绝对燃爆全场！',
+            '活力夜色，还差一步就炸！',
+            '你敢不敢，解锁更多惊喜？'
         ];
 
         // 随机选择初始加载文本
@@ -376,19 +376,19 @@
 
         generateParticles();
 
-        // 动态更新Teaser文本
-        function updateTeaser() {
+        // 动态更新标语
+        function updateSlogan() {
             if (hasRedirected) return;
-            teaser.textContent = teaserPhrases[Math.floor(Math.random() * teaserPhrases.length)];
-            setTimeout(updateTeaser, 5000);
+            slogan.textContent = sloganPhrases[Math.floor(Math.random() * sloganPhrases.length)];
+            setTimeout(updateSlogan, 5000);
         }
 
-        updateTeaser();
+        updateSlogan();
 
         // 5秒后启用确认按钮
         setTimeout(() => {
             confirmButton.disabled = false;
-            confirmButton.textContent = '我已满18岁，同意并继续';
+            confirmButton.textContent = '我已阅读，同意并继续';
         }, 5000);
 
         // 弹窗关闭
@@ -402,7 +402,7 @@
             const elapsedTime = Date.now() - startTime;
             if (elapsedTime >= randomDuration) {
                 hasRedirected = true;
-                message.textContent = '禁忌已解锁，准备开撩！';
+                message.textContent = '冒险解锁，准备嗨！';
                 loadingIcon.style.display = 'none';
                 checkmark.style.display = 'block';
                 setTimeout(() => {
@@ -433,7 +433,7 @@
         // 错误处理
         setTimeout(() => {
             if (!hasRedirected) {
-                message.textContent = '卡住了？刷新再撩一次！';
+                message.textContent = '卡住了？刷新再试！';
             }
         }, 35000);
     </script>
