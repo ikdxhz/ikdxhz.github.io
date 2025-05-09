@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>今晚的冒险，等你来嗨！</title>
+    <title>今晚的秘密，等你解锁！</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montez&family=Lobster&display=swap" rel="stylesheet">
     <style>
         body {
             display: flex;
@@ -11,49 +12,60 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            font-family: "Arial", sans-serif;
+            font-family: "Lobster", cursive;
             color: #fff;
             text-align: center;
             position: relative;
             overflow: hidden;
-            background: linear-gradient(135deg, #ff2e63, #590086);
-            animation: gradientShift 10s ease infinite;
-        }
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            background: #1a1a1a;
         }
         .loading-container {
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.9);
             padding: 30px;
             border-radius: 15px;
-            box-shadow: 0 0 20px rgba(255, 105, 180, 0.7);
-            animation: scalePulse 3s ease-in-out infinite;
+            box-shadow: 0 0 30px rgba(255, 20, 147, 0.8);
+            animation: scalePulse 3s ease-in-out infinite, shake 0.25s ease-in-out infinite alternate, neonGlow 1.5s ease-in-out infinite;
+            border: 2px solid #ff1493;
         }
         @keyframes scalePulse {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.1); }
         }
+        @keyframes shake {
+            0% { transform: translateX(-5px) rotate(-2deg); }
+            100% { transform: translateX(5px) rotate(2deg); }
+        }
+        @keyframes neonGlow {
+            0%, 100% { box-shadow: 0 0 20px rgba(255, 20, 147, 0.8), 0 0 40px rgba(255, 20, 147, 0.6); }
+            50% { box-shadow: 0 0 30px rgba(255, 20, 147, 1), 0 0 60px rgba(255, 20, 147, 0.8); }
+        }
         .loading-text {
-            font-size: 30px;
+            font-size: 36px;
             margin-bottom: 20px;
-            font-weight: bold;
-            text-shadow: 0 0 10px #ff69b4, 0 0 20px #ff69b4;
-            animation: textScale 2s ease-in-out infinite;
+            font-family: "Montez", cursive;
+            text-shadow: 0 0 15px #ff1493, 0 0 25px #ff1493;
+            animation: textScale 2s ease-in-out infinite, shakeText 0.2s ease-in-out infinite alternate, textFade 3s ease-in-out infinite;
         }
         @keyframes textScale {
             0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.15); }
+            50% { transform: scale(1.2); }
+        }
+        @keyframes shakeText {
+            0% { transform: translateY(-3px) rotate(-1deg); }
+            100% { transform: translateY(3px) rotate(1deg); }
+        }
+        @keyframes textFade {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 1; }
         }
         .loading-icon {
-            border: 5px solid rgba(255, 255, 255, 0.3);
-            border-top-color: #ff69b4;
+            border: 6px solid rgba(255, 255, 255, 0.2);
+            border-top-color: #ff1493;
             border-radius: 50%;
             width: 60px;
             height: 60px;
             margin: 0 auto 20px;
-            animation: spin 1s linear infinite;
+            animation: spin 0.8s linear infinite;
         }
         @keyframes spin {
             0% { transform: rotate(0deg); }
@@ -61,40 +73,40 @@
         }
         .progress-bar {
             width: 100%;
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 10px;
             overflow: hidden;
             margin-bottom: 10px;
         }
         .progress-bar-fill {
-            height: 10px;
-            background: linear-gradient(270deg, #ff69b4, #ff2e63);
+            height: 12px;
+            background: linear-gradient(270deg, #ff1493, #ff4500);
             width: 0%;
             border-radius: 10px;
         }
         .progress-percentage {
-            font-size: 18px;
-            font-weight: bold;
-            color: #ff69b4;
+            font-size: 20px;
+            font-family: "Lobster", cursive;
+            color: #ff1493;
             animation: scalePulse 2.5s ease-in-out infinite;
         }
         .message {
-            font-size: 20px;
+            font-size: 22px;
             margin-top: 20px;
-            color: #ffd1dc;
-            text-shadow: 0 0 5px #ff69b4;
+            color: #ffb6c1;
+            text-shadow: 0 0 10px #ff1493;
             animation: messageScale 2.2s ease-in-out infinite;
         }
         @keyframes messageScale {
             0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
+            50% { transform: scale(1.15); }
         }
         .slogan {
-            font-size: 16px;
+            font-size: 18px;
             margin-top: 15px;
             color: #ffccff;
-            text-shadow: 0 0 5px #ff69b4;
-            animation: fadeInOut 5s ease-in-out infinite;
+            text-shadow: 0 0 8px #ff1493;
+            animation: fadeInOut 4s ease-in-out infinite;
         }
         @keyframes fadeInOut {
             0%, 100% { opacity: 0; }
@@ -107,7 +119,7 @@
             display: none;
         }
         .checkmark__circle {
-            stroke: #ff69b4;
+            stroke: #ff1493;
             stroke-width: 4;
             stroke-dasharray: 166;
             stroke-dashoffset: 166;
@@ -122,9 +134,7 @@
             animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
         }
         @keyframes stroke {
-            100% {
-                stroke-dashoffset: 0;
-            }
+            100% { stroke-dashoffset: 0; }
         }
         .watermark {
             position: absolute;
@@ -136,16 +146,16 @@
             z-index: 1000;
         }
         .watermark div {
-            font-size: 26px;
-            font-weight: bold;
-            color: rgba(255, 182, 193, 0.4);
+            font-size: 28px;
+            font-family: "Montez", cursive;
+            color: rgba(255, 105, 180, 0.3);
             transform: rotate(-20deg);
             animation: watermarkScale 3s ease-in-out infinite;
             position: absolute;
         }
         @keyframes watermarkScale {
             0%, 100% { transform: scale(1) rotate(-20deg); }
-            50% { transform: scale(1.2) rotate(-20deg); }
+            50% { transform: scale(1.3) rotate(-20deg); }
         }
         .footer {
             position: absolute;
@@ -153,25 +163,23 @@
             width: 100%;
             text-align: center;
             font-size: 14px;
-            color: rgba(255, 182, 193, 0.6);
+            color: rgba(255, 105, 180, 0.5);
             animation: scalePulse 2.8s ease-in-out infinite;
         }
-        /* 粒子效果 */
         .particle {
             position: absolute;
-            width: 5px;
-            height: 5px;
-            background: #ff69b4;
-            border-radius: 50%;
-            opacity: 0.5;
-            animation: float 8s ease-in-out infinite;
+            width: 8px;
+            height: 8px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ff1493"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>') no-repeat;
+            background-size: cover;
+            opacity: 0.6;
+            animation: float 6s ease-in-out infinite;
         }
         @keyframes float {
-            0% { transform: translateY(0); opacity: 0.5; }
+            0% { transform: translateY(0); opacity: 0.6; }
             50% { transform: translateY(-100vh); opacity: 0; }
-            100% { transform: translateY(0); opacity: 0.5; }
+            100% { transform: translateY(0); opacity: 0.6; }
         }
-        /* 弹窗样式 */
         .modal {
             display: block;
             position: fixed;
@@ -180,51 +188,54 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
+            background-color: rgba(0, 0, 0, 0.9);
         }
         .modal-content {
-            background: linear-gradient(135deg, #ff2e63, #590086);
+            background: linear-gradient(135deg, #ff1493, #4b0082);
             margin: 10% auto;
             padding: 30px;
             border-radius: 15px;
             width: 85%;
             max-width: 600px;
-            box-shadow: 0 0 20px rgba(255, 105, 180, 0.7);
+            box-shadow: 0 0 30px rgba(255, 20, 147, 0.8);
             text-align: left;
             color: #fff;
             animation: scalePulse 2s ease-in-out infinite;
         }
         .modal-content h2 {
-            font-size: 24px;
+            font-size: 28px;
             margin-bottom: 20px;
-            text-shadow: 0 0 5px #ff69b4;
+            font-family: "Montez", cursive;
+            text-shadow: 0 0 10px #ff1493;
             text-align: center;
         }
         .modal-content p {
             font-size: 16px;
             margin-bottom: 15px;
             line-height: 1.5;
-            text-shadow: 0 0 3px #ff69b4;
+            text-shadow: 0 0 5px #ff1493;
         }
         .modal-content .highlight {
             font-weight: bold;
             color: #ffccff;
-            text-shadow: 0 0 5px #ff69b4;
+            text-shadow: 0 0 8px #ff1493;
         }
         .modal-content button {
-            background: #ff69b4;
+            background: #ff1493;
             border: none;
             padding: 12px 24px;
             border-radius: 10px;
             color: #fff;
-            font-size: 16px;
+            font-size: 18px;
+            font-family: "Lobster", cursive;
             cursor: pointer;
             display: block;
             margin: 20px auto 0;
-            transition: transform 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
         .modal-content button:hover {
-            transform: scale(1.1);
+            transform: scale(1.15);
+            box-shadow: 0 0 20px #ff1493;
         }
         .modal-content button:disabled {
             background: #666;
@@ -250,21 +261,17 @@
             <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
         </svg>
     </div>
-    <div class="watermark">
-        <!-- 动态生成的水印文字 -->
-    </div>
-    <div class="footer">仅限合法娱乐，安全合规</div>
-    <!-- 粒子容器 -->
+    <div class="watermark"></div>
+    <div class="footer">仅供娱乐，安全合规</div>
     <div id="particleContainer"></div>
-    <!-- 弹窗 -->
     <div id="disclaimerModal" class="modal">
         <div class="modal-content">
-            <h2>免责声明</h2>
-            <p>欢迎体验本网站。本平台提供合法、活泼的互动娱乐内容，严格遵守中华人民共和国相关法律法规及国际规范，适合所有年龄段用户，旨在带来轻松有趣的数字体验。</p>
-            <p>本网站内容包括文字、图像及互动功能，均经过严格审核，确保不涉及任何违法或不当信息。用户在使用本网站时，应遵守所在地区的法律法规。如您所在地区限制访问此类内容，请立即离开。</p>
-            <p><span class="highlight">特别声明：本网站可能引导用户至第三方网站（如 ikdxhz.top），该网站与本平台无任何关联，且不提供成人娱乐内容，系合法合规的独立平台。本平台的风格与内容与第三方网站完全无关，本平台不对其内容或运营承担任何责任。请用户自行判断并访问。</span></p>
-            <p>本网站不对用户因访问或使用本平台而可能产生的任何后果承担责任，包括但不限于数据丢失或其他间接损失。请确认您已了解并同意本声明，方可继续。如有疑问，请联系我们的客服团队。</p>
-            <button id="confirmButton" disabled>请阅读5秒后确认...</button>
+            <h2>火辣声明</h2>
+            <p>欢迎进入今晚的秘密乐园！本平台提供刺激、合法的成人娱乐体验，严格遵守相关法律法规，专为心跳加速的你设计，带来极致诱惑的数字冒险。</p>
+            <p>本网站包含挑逗文字、动态效果及互动功能，均经过审核，确保合法但足够火辣。使用时请确保你已满18岁并遵守当地法规。若你所在地区限制此类内容，速速离开，宝贝儿。</p>
+            <p><span class="highlight">特别提醒：本网站将引导你至第三方平台（如 ikdxhz.top），一个独立、合法的火辣乐园，与本平台无直接关联。本平台不对其内容负责，但保证它会让你的夜晚更精彩！自行决定是否探索哦。</span></p>
+            <p>我们不对因使用本平台产生的任何后果负责，包括心动过速或屏幕前的脸红。准备好迎接刺激了吗？确认即刻进入！</p>
+            <button id="confirmButton" disabled>请阅读5秒，同意button>
         </div>
     </div>
     <script>
@@ -281,72 +288,69 @@
         const particleContainer = document.getElementById('particleContainer');
 
         let progress = 0;
-        let startTime = Date.now();
+        let startTime = null;
         let hasRedirected = false;
         let lastMessageProgress = -10;
 
-        // 随机跳转时间（25到30秒）
-        const randomDuration = Math.floor(Math.random() * 5000) + 25000;
+        // Fixed 35-second duration
+        const fixedDuration = 35000;
 
-        // 活泼吸引人的文本池
         const loadingPhrases = [
-            '今晚的冒险，等你来嗨！',
-            '超燃的旅程，马上开冲！',
-            '心跳加速，惊喜来袭！',
-            '你的好奇心，准备炸裂！',
-            '嗨翻全场，敢不敢来？',
-            '青春的火花，点燃夜空！',
-            '冒险的召唤，你接不接？',
-            '欢乐的派对，马上开场！',
-            '超酷的挑战，等你来战！',
-            '梦想的舞台，准备起飞！',
-            '活力全开，冲向终点！',
-            '惊喜连连，下一秒揭晓！'
+            '今晚的秘密，等你解锁！',
+            '火辣冒险，即将开场！',
+            '心跳加速，准备好了吗？',
+            '你的欲望，马上释放！',
+            '诱惑之夜，敢不敢来？',
+            '情欲炸裂，下一秒揭晓！',
+            '热辣召唤，你敢接招？',
+            '禁忌乐园，门已打开！',
+            '刺激之旅，马上开冲！',
+            '你的幻想，准备成真！',
+            '夜色撩人，等你入戏！',
+            '极致诱惑，一触即发！'
         ];
         const messagePhrases = [
-            '正在点燃你的冒险魂...',
-            '心动指数，飙升到顶！',
-            '惊喜的门，已经裂开！',
-            '你的热情，加载满格！',
-            '别犹豫，欢乐才开始！',
-            '超燃的时刻，越来越近！',
-            '心跳加速，冒险来了！',
-            '青春的节奏，挡不住啦！',
-            '最后的惊喜，准备开箱！',
-            '嗨翻全场，马上炸裂！',
-            '你的好奇，已经无敌了！',
-            '冒险的边缘，敢不敢跨？',
-            '活力加载中，准备起飞！',
-            '欢乐到爆，等着瞧吧！'
+            '正在点燃你的情欲...',
+            '心动指数，飙到顶点！',
+            '禁忌之门，缓缓开启...',
+            '你的渴望，加载满格！',
+            '别忍了，热辣来袭！',
+            '刺激时刻，越来越近！',
+            '心跳狂飙，准备开干！',
+            '夜的节奏，挡不住了！',
+            '终极诱惑，马上解锁！',
+            '火辣高潮，即将炸裂！',
+            '你的秘密，无人知晓...',
+            '欲望边缘，敢不敢跳？',
+            '热辣加载，准备起飞！',
+            '极致快感，等你体验！'
         ];
         const watermarkPhrases = [
-            '活力冒险，禁止偷看！',
-            '青春嗨翻，合法合规',
-            '心跳挑战，点击就燃',
-            '欢乐时刻，仅限冒险家',
-            '超酷秘密，禁止外传',
+            '火辣秘密，禁止偷窥！',
+            '夜色诱惑，合法合规',
+            '心跳冒险，点击就燃',
+            '禁忌之夜，仅限大人',
+            '刺激体验，禁止外传',
             '大胆探索，安全第一',
-            '嗨翻夜空，合法体验',
-            '青春体验，禁止倒卖',
-            '你的热情，活力独享',
-            '冒险时刻，嗨到飞起',
-            '欢乐夜色，合法畅玩'
+            '热辣乐园，合法畅玩',
+            '你的欲望，独家享受',
+            '夜色撩人，禁止倒卖',
+            '极致诱惑，安全体验',
+            '火辣时刻，属于你我'
         ];
         const sloganPhrases = [
-            '想知道今晚有多燃？马上揭晓！',
-            '青春的秘密，只给勇敢的人！',
-            '你的冒险指数，已经爆表！',
-            '欢乐的挑战，准备好开冲了吗？',
-            '小心，接下来的惊喜超嗨！',
-            '今晚的冒险，绝对燃爆全场！',
-            '活力夜色，还差一步就炸！',
-            '你敢不敢，解锁更多惊喜？'
+            '今晚有多辣？马上揭晓！',
+            '你的秘密，只给夜色！',
+            '欲望指数，已经爆表！',
+            '火辣挑战，敢不敢上？',
+            '小心，下一秒超刺激！',
+            '今晚的冒险，绝对高潮！',
+            '夜色狂热，还差一步！',
+            '你敢不敢，解锁禁忌？'
         ];
 
-        // 随机选择初始加载文本
         loadingText.textContent = loadingPhrases[Math.floor(Math.random() * loadingPhrases.length)];
 
-        // 动态生成水印
         function generateWatermark() {
             const numWatermarks = 20;
             for (let i = 0; i < numWatermarks; i++) {
@@ -362,47 +366,69 @@
 
         generateWatermark();
 
-        // 生成粒子
         function generateParticles() {
             const numParticles = 20;
             for (let i = 0; i < numParticles; i++) {
                 const particle = document.createElement('div');
                 particle.className = 'particle';
                 particle.style.left = `${Math.random() * 100}%`;
-                particle.style.animationDelay = `${Math.random() * 8}s`;
+                particle.style.animationDelay = `${Math.random() * 6}s`;
                 particleContainer.appendChild(particle);
             }
         }
 
         generateParticles();
 
-        // 动态更新标语
         function updateSlogan() {
             if (hasRedirected) return;
             slogan.textContent = sloganPhrases[Math.floor(Math.random() * sloganPhrases.length)];
-            setTimeout(updateSlogan, 5000);
+            setTimeout(updateSlogan, 4000);
         }
 
         updateSlogan();
 
-        // 5秒后启用确认按钮
         setTimeout(() => {
             confirmButton.disabled = false;
-            confirmButton.textContent = '我已阅读，同意并继续';
+            confirmButton.textContent = '我已满18岁，进入禁区！';
         }, 5000);
 
-        // 弹窗关闭
         confirmButton.onclick = function() {
             modal.style.display = 'none';
+            startTime = Date.now();
+            updateProgress();
+            // Play sound effect with error handling
+            try {
+                // Placeholder: Replace with valid base64 audio or external URL
+                // Example: const audio = new Audio('https://example.com/sultry-click.mp3');
+                const audio = new Audio('data:audio/mp3;base64,/+MYxAAEaAIEAAQAA...'); // Replace with actual base64 audio
+                audio.play().catch(err => console.log('Audio playback failed:', err));
+            } catch (err) {
+                console.log('Audio initialization failed:', err);
+            }
+            // Heart-shaped particle effect
+            const heart = document.createElement('div');
+            heart.className = 'particle';
+            heart.style.position = 'fixed';
+            heart.style.left = '50%';
+            heart.style.top = '50%';
+            heart.style.transform = 'scale(3)';
+            heart.style.opacity = '0';
+            heart.style.transition = 'all 0.5s';
+            document.body.appendChild(heart);
+            setTimeout(() => {
+                heart.style.opacity = '1';
+                heart.style.transform = 'scale(5)';
+                setTimeout(() => heart.remove(), 500);
+            }, 10);
         };
 
         function updateProgress() {
-            if (hasRedirected) return;
+            if (hasRedirected || !startTime) return;
 
             const elapsedTime = Date.now() - startTime;
-            if (elapsedTime >= randomDuration) {
+            if (elapsedTime >= fixedDuration) {
                 hasRedirected = true;
-                message.textContent = '冒险解锁，准备嗨！';
+                message.textContent = '禁区解锁，火辣开场！';
                 loadingIcon.style.display = 'none';
                 checkmark.style.display = 'block';
                 setTimeout(() => {
@@ -411,12 +437,10 @@
                 return;
             }
 
-            // 模拟加载效果
-            progress = Math.min(100, Math.pow(elapsedTime / randomDuration, 2) * 100);
+            progress = Math.min(100, Math.pow(elapsedTime / fixedDuration, 2) * 100);
             progressBar.style.width = `${progress.toFixed(2)}%`;
             progressPercentage.textContent = `${progress.toFixed(2)}%`;
 
-            // 每10%更新一次消息
             if (Math.floor(progress / 10) > Math.floor(lastMessageProgress / 10)) {
                 message.textContent = messagePhrases[Math.floor(Math.random() * messagePhrases.length)];
                 lastMessageProgress = progress;
@@ -425,17 +449,11 @@
             requestAnimationFrame(updateProgress);
         }
 
-        // 只有在关闭弹窗后才开始加载
-        confirmButton.addEventListener('click', () => {
-            updateProgress();
-        });
-
-        // 错误处理
         setTimeout(() => {
             if (!hasRedirected) {
-                message.textContent = '卡住了？刷新再试！';
+                message.textContent = '卡住了？再试一次，宝贝！';
             }
-        }, 35000);
+        }, 40000); // Buffer for 35-second duration Rosenthal('data:audio/mp3;base64,/+MYxAAEaAIEAAQAA...') // Replace with actual base64 audio
     </script>
 </body>
 </html>
