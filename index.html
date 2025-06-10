@@ -55,6 +55,7 @@
             background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
             background-size: 400%;
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
             animation: gradient 5s linear infinite;
         }
@@ -113,40 +114,266 @@
         }
         .comments-section {
             margin-top: 30px;
-            border-top: 1px solid #fff;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
             padding-top: 20px;
+            position: relative;
+            max-height: 500px;
+            overflow-y: auto;
+            padding-right: 15px;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255, 255, 255, 0.3) rgba(0, 0, 0, 0.1);
+        }
+        .comments-section::-webkit-scrollbar {
+            width: 8px;
+        }
+        .comments-section::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        .comments-section::-webkit-scrollbar-thumb {
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            border: 2px solid rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        .comments-section::-webkit-scrollbar-thumb:hover {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+        .comments-section::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #fff, transparent);
+            border-radius: 2px;
+            animation: pulseLine 2s infinite alternate;
+        }
+        @keyframes pulseLine {
+            0% {
+                opacity: 0.5;
+                width: 40px;
+            }
+            100% {
+                opacity: 1;
+                width: 80px;
+            }
         }
         .comment {
             display: flex;
             align-items: start;
             margin-bottom: 20px;
-            padding: 15px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            border-left: 3px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+            animation: commentFadeIn 0.6s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        .comment:nth-child(odd) {
+            animation-delay: calc(0.1s * var(--i, 1));
+        }
+        .comment:nth-child(even) {
+            animation-delay: calc(0.15s * var(--i, 1));
+        }
+        @keyframes commentFadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .comment:hover {
+            transform: translateY(-3px) scale(1.01);
+            background: rgba(255, 255, 255, 0.12);
+            border-left: 3px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        .comment:active {
+            transform: translateY(0) scale(0.98);
+            transition: all 0.1s ease;
         }
         .comment-avatar {
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
-            margin-right: 15px;
-            border: 2px solid #fff;
+            margin-right: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            object-fit: cover;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+            animation: pulseAvatar 3s infinite alternate;
+        }
+        @keyframes pulseAvatar {
+            0% {
+                border-color: rgba(255, 255, 255, 0.2);
+                box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+            }
+            100% {
+                border-color: rgba(255, 255, 255, 0.4);
+                box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+            }
+        }
+        .comment:hover .comment-avatar {
+            border-color: rgba(255, 255, 255, 0.8);
+            transform: scale(1.05) rotate(5deg);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+            animation: none;
         }
         .comment-content {
             flex: 1;
+            position: relative;
+            overflow: hidden;
+        }
+        .comment-content::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+            transition: width 0.5s ease;
+        }
+        .comment:hover .comment-content::after {
+            width: 100%;
         }
         .comment-author {
             color: #fff;
             font-weight: bold;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
+            font-size: 18px;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .comment:hover .comment-author {
+            transform: translateX(5px);
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+        }
+        .comment-author::after {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: #4CAF50;
+            border-radius: 50%;
+            margin-left: 10px;
+            animation: pulseStatus 2s infinite;
+        }
+        @keyframes pulseStatus {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 0.7;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
         }
         .comment-text {
-            color: #ddd;
-            line-height: 1.5;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.6;
+            font-size: 16px;
+            margin-bottom: 10px;
+            letter-spacing: 0.3px;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+        .comment:hover .comment-text {
+            color: rgba(255, 255, 255, 0.95);
+        }
+        .comment-text::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -5px;
+            width: 2px;
+            height: 0;
+            background: rgba(255, 255, 255, 0.3);
+            transition: height 0.4s ease;
+            z-index: -1;
+        }
+        .comment:hover .comment-text::before {
+            height: 100%;
         }
         .comment-time {
-            color: #888;
+            color: rgba(255, 255, 255, 0.5);
             font-size: 12px;
-            margin-top: 5px;
+            margin-top: 8px;
+            display: flex;
+            align-items: center;
+            font-style: italic;
+            transition: all 0.3s ease;
+        }
+        .comment:hover .comment-time {
+            color: rgba(255, 255, 255, 0.8);
+            transform: translateX(5px);
+        }
+        .comment-time::before {
+            content: '⏱';
+            margin-right: 5px;
+            font-size: 14px;
+            animation: rotateIcon 5s linear infinite;
+            display: inline-block;
+        }
+        @keyframes rotateIcon {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        .comments-section h3 {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            animation: titleGlow 3s infinite alternate;
+        }
+        @keyframes titleGlow {
+            0% {
+                text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+            }
+            100% {
+                text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+            }
+        }
+        .comments-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #fff, transparent);
+            animation: lineSlide 3s infinite alternate;
+            background-size: 200% 100%;
+        }
+        @keyframes lineSlide {
+            0% {
+                background-position: 0% 0%;
+            }
+            100% {
+                background-position: 100% 0%;
+            }
         }
     </style>
 </head>
@@ -355,6 +582,524 @@
                         <div class="comment-author">许芳</div>
                         <div class="comment-text">期待正式版发布！</div>
                         <div class="comment-time">2024-03-22 03:45</div>
+                    </div>
+                </div>
+                <!-- 批评性评论 -->
+                <div class="comment">
+                    <img src="91.jpg" alt="用户头像" class="comment-avatar">
+                    <div class="comment-content">
+                        <div class="comment-author">赵文博</div>
+                        <div class="comment-text">游戏速度太快了，初学者很难适应，建议增加难度等级选择。另外在手机上玩的时候触控灵敏度需要调整，经常误触导致游戏结束。</div>
+                        <div class="comment-time">2024-03-22 08:15</div>
+                    </div>
+                </div>
+                <!-- 提问性评论 -->
+                <div class="comment">
+                    <img src="91.jpg" alt="用户头像" class="comment-avatar">
+                    <div class="comment-content">
+                        <div class="comment-author">林小雨</div>
+                        <div class="comment-text">请问什么时候会推出多人对战模式？期待能和朋友一起玩！另外，有没有计划增加皮肤系统？黑白风格很酷，但偶尔换换主题也不错。</div>
+                        <div class="comment-time">2024-03-22 09:30</div>
+                    </div>
+                </div>
+                <!-- 建议性评论 -->
+                <div class="comment">
+                    <img src="91.jpg" alt="用户头像" class="comment-avatar">
+                    <div class="comment-content">
+                        <div class="comment-author">孙建国</div>
+                        <div class="comment-text">建议增加暂停功能和音效系统，玩游戏的时候有背景音乐和音效会更有沉浸感。另外可以考虑添加成就系统，激励玩家不断挑战高分。</div>
+                        <div class="comment-time">2024-03-22 10:45</div>
+                    </div>
+                </div>
+                <!-- 技术性评论 -->
+                <div class="comment">
+                    <img src="91.jpg" alt="用户头像" class="comment-avatar">
+                    <div class="comment-content">
+                        <div class="comment-author">陈工程</div>
+                        <div class="comment-text">使用Canvas实现贪吃蛇很流畅，但建议在requestAnimationFrame上优化而不是setTimeout，性能会更好。另外考虑使用Web Workers来处理游戏逻辑可以避免主线程阻塞。</div>
+                        <div class="comment-time">2024-03-22 11:30</div>
+                    </div>
+                </div>
+                <!-- 幽默评论 -->
+                <div class="comment">
+                    <img src="91.jpg" alt="用户头像" class="comment-avatar">
+                    <div class="comment-content">
+                        <div class="comment-author">王小乐</div>
+                        <div class="comment-text">玩了三个小时，我感觉自己变成了一条蛇🐍 走路都是S型的，看到白点就想吃，看到墙就自动转弯...这游戏太上瘾了哈哈！</div>
+                        <div class="comment-time">2024-03-22 12:15</div>
+                    </div>
+                </div>
+                <!-- 详细长评论 -->
+                <div class="comment">
+                    <img src="91.jpg" alt="用户头像" class="comment-avatar">
+                    <div class="comment-content">
+                        <div class="comment-author">张评测</div>
+                        <div class="comment-text">作为一个老游戏玩家，我玩过无数版本的贪吃蛇，这个版本的特点是回归极简，黑白配色让人想起诺基亚时代的经典游戏，但现代化的响应式设计和触控支持又让它焕发新生。游戏机制保持了经典的简单有趣，没有华丽但不必要的装饰，这正是它的魅力所在。如果非要提建议，我觉得可以加入一些小的创新元素，比如特殊食物、障碍物或者关卡系统，但也要小心不要破坏原有的简约风格。总体来说，这是一款值得推荐的休闲小游戏，既能怀旧又不显陈旧。评分：9/10。</div>
+                        <div class="comment-time">2024-03-22 13:00</div>
+                    </div>
+                </div>
+                <!-- 愤怒评论 -->
+                <div class="comment">
+                    <img src="91.jpg" alt="用户头像" class="comment-avatar">
+                    <div class="comment-content">
+                        <div class="comment-author">刘不高兴</div>
+                        <div class="comment-text">这游戏太气人了！！！我明明按了左但它偏要往右走？？？谁设计的控制系统啊！！一点也不精准，害我连续三次高分就这么没了！😡😡😡 修复一下控制问题好吗！！</div>
+                        <div class="comment-time">2024-03-22 14:25</div>
+                    </div>
+                </div>
+                <!-- 新手询问 -->
+                <div class="comment">
+                    <img src="91.jpg" alt="用户头像" class="comment-avatar">
+                    <div class="comment-content">
+                        <div class="comment-author">小新人</div>
+                        <div class="comment-text">请问大家是怎么获得高分的？我最多只能吃到15个食物就撞墙了...有什么技巧可以分享吗？</div>
+                        <div class="comment-time">2024-03-22 15:10</div>
+                    </div>
+                </div>
+                <!-- 专业分析 -->
+                <div class="comment">
+                    <img src="91.jpg" alt="用户头像" class="comment-avatar">
+                    <div class="comment-content">
+                        <div class="comment-author">游戏分析师</div>
+                        <div class="comment-text">从游戏设计角度看，这款贪吃蛇抓住了"易于上手，难于精通"的核心理念。简单的规则配合不断增加的挑战性（蛇越长越难控制）创造了良好的游戏体验曲线。建议开发者考虑添加渐进式的难度系统，以及更多的视觉反馈来增强游戏的可玩性和留存率。</div>
+                        <div class="comment-time">2024-03-22 16:30</div>
+                    </div>
+                </div>
+                <!-- 社区氛围 -->
+                <div class="comment">
+                    <img src="91.jpg" alt="用户头像" class="comment-avatar">
+                    <div class="comment-content">
+                        <div class="comment-author">社区管理员</div>
+                        <div class="comment-text">欢迎大家来到贪吃蛇社区！请记得分享你的高分和游戏技巧，互相学习。如果发现任何bug或有建议，可以直接在评论区留言。我们会定期举办小型比赛，敬请期待！</div>
+                        <div class="comment-time">2024-03-22 17:20</div>
+                    </div>
+                </div>
+                <!-- 国际玩家 -->
+                <div class="comment">
+                    <img src="91.jpg" alt="用户头像" class="comment-avatar">
+                    <div class="comment-content">
+                        <div class="comment-author">John Smith</div>
+                        <div class="comment-text">这是我玩过的最好的贪吃蛇游戏之一！虽然我不会中文，但游戏界面简洁明了，完全不影响体验。希望未来能增加英文界面支持。My highest score is 320!</div>
+                        <div class="comment-time">2024-03-22 18:15</div>
+                    </div>
+                </div>
+                <!-- 创意建议 -->
+                <div class="comment">
+                    <img src="91.jpg" alt="用户头像" class="comment-avatar">
+                    <div class="comment-content">
+                        <div class="comment-author">创意设计师</div>
+                        <div class="comment-text">灵光一闪！如果能加入"反转模式"会很有趣，就是黑白颜色定期切换，或者控制方向反转，增加游戏的挑战性和趣味性。另外，考虑过加入"迷宫模式"吗？在场景中随机生成墙壁障碍物。</div>
+                        <div class="comment-time">2024-03-22 19:05</div>
+                    </div>
+                </div>
+                <!-- 怀旧玩家 -->
+                <div class="comment">
+                    <img src="91.jpg" alt="用户头像" class="comment-avatar">
+                    <div class="comment-content">
+                        <div class="comment-author">80后游戏迷</div>
+                        <div class="comment-text">这游戏勾起了我满满的童年回忆！那时候我们用的是小霸王游戏机，玩的就是这种简单但上瘾的游戏。谢谢开发者保留了经典的游戏体验，同时又加入了现代元素。</div>
+                        <div class="comment-time">2024-03-22 20:30</div>
+                    </div>
+                </div>
+                <!-- 学生用户 -->
+                <div class="comment">
+                    <img src="91.jpg" alt="用户头像" class="comment-avatar">
+                    <div class="comment-content">
+                        <div class="comment-author">张浩然</div>
+                        <div class="comment-text">老师都不知道我课间十分钟在玩这个😂 真是上瘾，差点迟到好几次！不过这个游戏加载速度超快，随时可以暂停真的很方便。</div>
+                        <div class="comment-time">2024-03-22 21:15</div>
+                    </div>
+                </div>
+                <!-- 技术爱好者 -->
+                <div class="comment">
+                    <img src="91.jpg" alt="用户头像" class="comment-avatar">
+                    <div class="comment-content">
+                        <div class="comment-author">李明宇</div>
+                        <div class="comment-text">研究了一下源码，CSS和JavaScript写得很规范，代码逻辑清晰。不过我注意到在某些低端安卓设备上有轻微卡顿，可能是requestAnimationFrame实现的问题，建议做下兼容性处理。</div>
+                        <div class="comment-time">2024-03-22 22:05</div>
+                    </div>
+                </div>
+                <!-- 年长玩家 -->
+                <div class="comment">
+                    <img src="91.jpg" alt="用户头像" class="comment-avatar">
+                    <div class="comment-content">
+                        <div class="comment-author">王建军</div>
+                        <div class="comment-text">退休在家没事做，儿子推荐我玩这个打发时间。虽然我60多岁了眼神不太好，但黑白对比强烈，看得很清楚，操作也简单。唯一的问题是速度太快了，能不能考虑加个"老年模式"，速度慢一点？</div>
+                        <div class="comment-time">2024-03-22 23:20</div>
+                    </div>
+                </div>
+                <!-- 外国友人 -->
+                <div class="comment">
+                    <img src="91.jpg" alt="用户头像" class="comment-avatar">
+                    <div class="comment-content">
+                        <div class="comment-author">Emily Wilson</div>
+                        <div class="comment-text">I'm learning Chinese and this game is perfect for me! Simple controls, no complicated instructions needed. 我的中文还不太好，但是这个游戏很容易理解。Snake game is universal! 谢谢分享！</div>
+                        <div class="comment-time">2024-03-23 00:40</div>
+                    </div>
+                </div>
+                <!-- 专业游戏玩家 -->
+                <div class="comment">
+                    <img src="91.jpg" alt="用户头像" class="comment-avatar">
+                    <div class="comment-content">
+                        <div class="comment-author">陈天奇</div>
+                        <div class="comment-text">作为电竞俱乐部的职业选手，平时训练太紧张了，休息时玩这种简单游戏放松一下挺好的。我的最高记录是893分，有谁能打破吗？哈哈，欢迎挑战！</div>
+                        <div class="comment-time">2024-03-23 01:30</div>
+                    </div>
+                </div>
+                <!-- 家长评论 -->
+                <div class="comment">
+                    <img src="91.jpg" alt="用户头像" class="comment-avatar">
+                    <div class="comment-content">
+                        <div class="comment-author">赵雅芝</div>
+                        <div class="comment-text">终于找到一款可以和孩子一起玩的简单游戏！我家7岁的儿子特别喜欢，而且不像其他游戏那样充满暴力和内购。唯一的"问题"是现在他总是缠着我比赛，而且他总是赢😅</div>
+                        <div class="comment-time">2024-03-23 09:15</div>
+                    </div>
+                </div>
+                <!-- 南方口音用户 -->
+                <div class="comment">
+                    <img src="91.jpg" alt="用户头像" class="comment-avatar">
+                    <div class="comment-content">
+                        <div class="comment-author">吴小逸</div>
+                        <div class="comment-text">我是广东人，平时喜欢打麻将，不过这个蛇仔游戏都几好玩呀！控制很灵敏，特别系喺手机上玩，滑动一下就会转向，真系几过瘾！希望以后能整个粤语版嘅～</div>
+                        <div class="comment-time">2024-03-23 10:30</div>
+                    </div>
+                </div>
+                <!-- 北方用户 -->
+                <div class="comment">
+                    <img src="91.jpg" alt="用户头像" class="comment-avatar">
+                    <div class="comment-content">
+                        <div class="comment-author">孙铁柱</div>
+                        <div class="comment-text">东北爷们儿表示这游戏挺带劲！在冬天室外零下20度不敢出门的时候，窝在炕上玩这个贼拉好！就是有时候手冻得有点僵硬，控制不太灵活，哈哈！</div>
+                        <div class="comment-time">2024-03-23 11:45</div>
+                    </div>
+                </div>
+                <!-- 设计师评论 -->
+                <div class="comment">
+                    <img src="91.jpg" alt="用户头像" class="comment-avatar">
+                    <div class="comment-content">
+                        <div class="comment-author">林佳怡</div>
+                        <div class="comment-text">作为UI设计师，我很欣赏这种极简设计美学。黑白对比强烈，没有多余的视觉元素干扰，让玩家可以专注于游戏本身。这证明了好的设计不一定要华丽，简约也能很出色。</div>
+                        <div class="comment-time">2024-03-23 13:20</div>
+                    </div>
+                </div>
+                <!-- 程序员用户 -->
+                <div class="comment">
+                    <img src="91.jpg" alt="用户头像" class="comment-avatar">
+                    <div class="comment-content">
+                        <div class="comment-author">张志强</div>
+                        <div class="comment-text">代码写得真不错，我已经fork到自己的GitHub上学习了。特别是那个碰撞检测算法很巧妙。不过建议优化一下移动端的触控响应区域，现在太小了，大拇指容易误触。</div>
+                        <div class="comment-time">2024-03-23 14:10</div>
+                    </div>
+                </div>
+                <!-- 医生用户 -->
+                <div class="comment">
+                    <img src="91.jpg" alt="用户头像" class="comment-avatar">
+                    <div class="comment-content">
+                        <div class="comment-author">刘医生</div>
+                        <div class="comment-text">作为神经科医生，我发现这类简单但需要专注的游戏对改善手眼协调能力很有帮助。我甚至推荐一些恢复期的患者适度玩这类游戏来训练注意力和反应速度。不过记得控制时间，保护眼睛！</div>
+                        <div class="comment-time">2024-03-23 15:35</div>
+                    </div>
+                </div>
+                <!-- 学生党 -->
+                <div class="comment">
+                    <img src="91.jpg" alt="用户头像" class="comment-avatar">
+                    <div class="comment-content">
+                        <div class="comment-author">周小天</div>
+                        <div class="comment-text">期末复习好累啊，玩这个放松一下大脑。不过越玩越上瘾，结果复习计划又泡汤了😭 求开发者加个定时提醒功能，玩太久自动提醒我去学习啊！</div>
+                        <div class="comment-time">2024-03-23 16:25</div>
+                    </div>
+                </div>
+                <!-- 资深玩家 -->
+                <div class="comment">
+                    <img src="91.jpg" alt="用户头像" class="comment-avatar">
+                    <div class="comment-content">
+                        <div class="comment-author">黄志远</div>
+                        <div class="comment-text">我发现一个小技巧，如果蛇快撞墙时，快速连续转两次弯可以救急。另外建议大家不要一开始就急着吃食物，先在中间区域绕几圈让蛇长起来，这样后期操作会更容易控制节奏。</div>
+                        <div class="comment-time">2024-03-23 17:50</div>
+                    </div>
+                </div>
+                <!-- 留学生 -->
+                <div class="comment">
+                    <img src="91.jpg" alt="用户头像" class="comment-avatar">
+                    <div class="comment-content">
+                        <div class="comment-author">Michael Chen</div>
+                        <div class="comment-text">我在美国留学，经常怀念国内的游戏。这个贪吃蛇虽然简单，但设计很精良，跟美国一些过度商业化的游戏相比反而更耐玩。希望开发者以后多出一些这样品质的小游戏！</div>
+                        <div class="comment-time">2024-03-23 19:05</div>
+                    </div>
+                </div>
+                <!-- 办公室白领 -->
+                <div class="comment">
+                    <img src="91.jpg" alt="用户头像" class="comment-avatar">
+                    <div class="comment-content">
+                        <div class="comment-author">徐晓华</div>
+                        <div class="comment-text">午休时间偷偷玩一局，缓解工作压力。老板经过还以为我在专心工作，哈哈！黑白界面看起来就像在处理Excel表格一样正经😏 太适合办公室摸鱼了！</div>
+                        <div class="comment-time">2024-03-23 20:30</div>
+                    </div>
+                </div>
+                <!-- 西南地区用户 -->
+                <div class="comment">
+                    <img src="91.jpg" alt="用户头像" class="comment-avatar">
+                    <div class="comment-content">
+                        <div class="comment-author">杨晓蓉</div>
+                        <div class="comment-text">重庆妹子来报到！这个游戏安逸得板，操作简单，界面干净利索，就是速度有点快，跟我们重庆的火锅一样辣么激烈！建议加个辣度调节功能，哈哈！</div>
+                        <div class="comment-time">2024-03-23 21:45</div>
+                    </div>
+                </div>
+                <!-- 西北用户 -->
+                <div class="comment">
+                    <img src="91.jpg" alt="用户头像" class="comment-avatar">
+                    <div class="comment-content">
+                        <div class="comment-author">马兰花</div>
+                        <div class="comment-text">我是新疆的，这边网络有时候不太好，但这个游戏占用流量极少，即使信号不好也能流畅玩，赞一个！冬天特别冷的时候窝在家里玩特别有意思。</div>
+                        <div class="comment-time">2024-03-23 22:15</div>
+                    </div>
+                </div>
+                <!-- 外籍友人 -->
+                <div class="comment">
+                    <img src="91.jpg" alt="用户头像" class="comment-avatar">
+                    <div class="comment-content">
+                        <div class="comment-author">Alexander Petrov</div>
+                        <div class="comment-text">我是俄罗斯留学生，这个游戏让我想起了小时候玩的俄罗斯方块，同样简单但上瘾。我喜欢这种不需要复杂规则就能上手的游戏。Отличная игра! (很棒的游戏!)</div>
+                        <div class="comment-time">2024-03-23 23:30</div>
+                    </div>
+                </div>
+                <!-- 特殊身份：宇航员 -->
+                <div class="comment">
+                    <img src="91.jpg" alt="用户头像" class="comment-avatar">
+                    <div class="comment-content">
+                        <div class="comment-author">王宇航</div>
+                        <div class="comment-text">从国际空间站发来评论！在失重环境下玩这个游戏特别有意思，蛇的移动轨迹让我想起了太空中的轨道。不过建议增加一个"太空模式"，让蛇可以穿过边界，就像在太空中没有边界一样！</div>
+                        <div class="comment-time">2024-03-24 00:15</div>
+                    </div>
+                </div>
+                <!-- 特殊场景：极地探险家 -->
+                <div class="comment">
+                    <img src="91.jpg" alt="用户头像" class="comment-avatar">
+                    <div class="comment-content">
+                        <div class="comment-author">李极光</div>
+                        <div class="comment-text">在南极科考站，零下40度的极夜中，这个游戏成了我们最好的消遣。黑白配色特别适合极地环境，不会刺激眼睛。建议增加一个"极光模式"，让蛇移动时留下极光般的轨迹！</div>
+                        <div class="comment-time">2024-03-24 01:30</div>
+                    </div>
+                </div>
+                <!-- 特殊语言：文言文 -->
+                <div class="comment">
+                    <img src="91.jpg" alt="用户头像" class="comment-avatar">
+                    <div class="comment-content">
+                        <div class="comment-author">古文爱好者</div>
+                        <div class="comment-text">此游戏甚妙！黑白二色，简约而不失其趣。蛇行如龙，蜿蜒曲折，颇有古意。吾每日必玩，以解工作之乏。望开发者能增一"古风模式"，以篆书为食，以竹简为界，岂不美哉？</div>
+                        <div class="comment-time">2024-03-24 02:45</div>
+                    </div>
+                </div>
+                <!-- 特殊身份：AI研究员 -->
+                <div class="comment">
+                    <img src="91.jpg" alt="用户头像" class="comment-avatar">
+                    <div class="comment-content">
+                        <div class="comment-author">张智能</div>
+                        <div class="comment-text">作为AI研究员，我发现这个游戏是训练强化学习算法的绝佳环境。我已经用这个游戏训练了一个AI，它能在1000步内达到500分。建议开发者开放API，让更多研究者可以基于此开发AI算法！</div>
+                        <div class="comment-time">2024-03-24 03:20</div>
+                    </div>
+                </div>
+                <!-- 特殊场景：沙漠探险 -->
+                <div class="comment">
+                    <img src="91.jpg" alt="用户头像" class="comment-avatar">
+                    <div class="comment-content">
+                        <div class="comment-author">沙行者</div>
+                        <div class="comment-text">在撒哈拉沙漠的帐篷里，靠着太阳能充电宝玩这个游戏。黑白配色在沙漠的强光下特别清晰，不会反光。建议增加一个"沙漠模式"，让蛇在沙丘间穿行，躲避仙人掌障碍！</div>
+                        <div class="comment-time">2024-03-24 04:35</div>
+                    </div>
+                </div>
+                <!-- 特殊语言：摩斯密码 -->
+                <div class="comment">
+                    <img src="91.jpg" alt="用户头像" class="comment-avatar">
+                    <div class="comment-content">
+                        <div class="comment-author">电波爱好者</div>
+                        <div class="comment-text">.-.. --- ...- . / - .... .. ... / --. .- -- . / ... --- / -- ..- -.-. .... / .. - / .-. . -- .. -. -.. ... / -- . / --- ..-. / -- --- .-. ... . / -.-. --- -.. . / -.-. --- -- -- ..- -. .. -.-. .- - .. --- -. / .-.. --- ...- . / .. - / .-.-.- / .-.-.- / .-.-.-</div>
+                        <div class="comment-time">2024-03-24 05:50</div>
+                    </div>
+                </div>
+                <!-- 特殊身份：盲人用户 -->
+                <div class="comment">
+                    <img src="91.jpg" alt="用户头像" class="comment-avatar">
+                    <div class="comment-content">
+                        <div class="comment-author">李光明</div>
+                        <div class="comment-text">作为视障人士，我通过屏幕阅读器体验这个游戏。黑白对比强烈，加上声音提示，让我也能享受游戏乐趣。建议增加无障碍模式，为视障用户提供更详细的语音反馈，让游戏更加包容！</div>
+                        <div class="comment-time">2024-03-24 06:15</div>
+                    </div>
+                </div>
+                <!-- 特殊场景：深海潜水 -->
+                <div class="comment">
+                    <img src="91.jpg" alt="用户头像" class="comment-avatar">
+                    <div class="comment-content">
+                        <div class="comment-author">深海探索者</div>
+                        <div class="comment-text">在300米深的潜水器里，等待海底火山喷发时玩这个游戏。黑白配色在深海中特别醒目，不会干扰到观察窗外的生物。建议增加一个"深海模式"，让蛇像深海生物一样发光移动！</div>
+                        <div class="comment-time">2024-03-24 07:30</div>
+                    </div>
+                </div>
+                <!-- 特殊语言：编程语言 -->
+                <div class="comment">
+                    <img src="91.jpg" alt="用户头像" class="comment-avatar">
+                    <div class="comment-content">
+                        <div class="comment-author">代码诗人</div>
+                        <div class="comment-text">while(game.isRunning()) {<br>
+                            &nbsp;&nbsp;snake.move();<br>
+                            &nbsp;&nbsp;if(snake.eats(food)) {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;score.increase();<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;food.respawn();<br>
+                            &nbsp;&nbsp;}<br>
+                            &nbsp;&nbsp;if(snake.collides()) {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;game.over();<br>
+                            &nbsp;&nbsp;}<br>
+                        }<br>
+                        // 这游戏就像这段代码一样简洁优雅！</div>
+                        <div class="comment-time">2024-03-24 08:45</div>
+                    </div>
+                </div>
+                <!-- 特殊身份：时间旅行者 -->
+                <div class="comment">
+                    <img src="91.jpg" alt="用户头像" class="comment-avatar">
+                    <div class="comment-content">
+                        <div class="comment-author">时空旅人</div>
+                        <div class="comment-text">从2157年发来评论！这个游戏在未来的复古游戏博物馆里非常受欢迎。我们现在的游戏都是全息投影和脑机接口了，但偶尔回到这种简单的黑白游戏，反而能感受到最纯粹的乐趣。</div>
+                        <div class="comment-time">2024-03-24 09:20</div>
+                    </div>
+                </div>
+                <!-- 特殊场景：火山口 -->
+                <div class="comment">
+                    <img src="91.jpg" alt="用户头像" class="comment-avatar">
+                    <div class="comment-content">
+                        <div class="comment-author">火山学家</div>
+                        <div class="comment-text">在夏威夷基拉韦厄火山口边缘，等待岩浆喷发时玩这个游戏。黑白配色在火山灰弥漫的环境中特别清晰。建议增加一个"火山模式"，让蛇在岩浆流中穿行，躲避火山灰！</div>
+                        <div class="comment-time">2024-03-24 10:35</div>
+                    </div>
+                </div>
+                <!-- 特殊语言：数学公式 -->
+                <div class="comment">
+                    <img src="91.jpg" alt="用户头像" class="comment-avatar">
+                    <div class="comment-content">
+                        <div class="comment-author">数学爱好者</div>
+                        <div class="comment-text">这个游戏的运动轨迹可以用参数方程表示：<br>
+                        x(t) = x₀ + v₀t + ½at²<br>
+                        y(t) = y₀ + v₀t + ½at²<br>
+                        其中a是加速度，v₀是初速度。蛇的移动路径形成了一个优美的数学曲线，就像斐波那契数列一样自然！</div>
+                        <div class="comment-time">2024-03-24 11:50</div>
+                    </div>
+                </div>
+                <!-- 特殊身份：动物学家 -->
+                <div class="comment">
+                    <img src="91.jpg" alt="用户头像" class="comment-avatar">
+                    <div class="comment-content">
+                        <div class="comment-author">蛇类专家</div>
+                        <div class="comment-text">作为研究蛇类20年的专家，我发现这个游戏中的蛇移动方式非常符合真实蛇类的运动特征。建议增加一个"真实蛇模式"，模拟不同种类蛇的移动方式，比如眼镜蛇的S形移动和蟒蛇的直线移动！</div>
+                        <div class="comment-time">2024-03-24 12:15</div>
+                    </div>
+                </div>
+                <!-- 特殊场景：太空站 -->
+                <div class="comment">
+                    <img src="91.jpg" alt="用户头像" class="comment-avatar">
+                    <div class="comment-content">
+                        <div class="comment-author">空间站工程师</div>
+                        <div class="comment-text">在空间站维修太阳能板时，等待系统重启时玩这个游戏。黑白配色在太空的强光下特别清晰，不会干扰到工作。建议增加一个"太空站模式"，让蛇在空间站的各种设备间穿行！</div>
+                        <div class="comment-time">2024-03-24 13:30</div>
+                    </div>
+                </div>
+                <!-- 特殊语言：音乐符号 -->
+                <div class="comment">
+                    <img src="91.jpg" alt="用户头像" class="comment-avatar">
+                    <div class="comment-content">
+                        <div class="comment-author">音乐家</div>
+                        <div class="comment-text">这个游戏的节奏感让我想起了巴赫的赋格曲！蛇的移动就像音符在五线谱上跳跃。建议增加一个"音乐模式"，让蛇的移动产生不同的音符，玩家可以创作自己的贪吃蛇交响曲！</div>
+                        <div class="comment-time">2024-03-24 14:45</div>
+                    </div>
+                </div>
+                <!-- 特殊身份：考古学家 -->
+                <div class="comment">
+                    <img src="91.jpg" alt="用户头像" class="comment-avatar">
+                    <div class="comment-content">
+                        <div class="comment-author">古墓探索者</div>
+                        <div class="comment-text">在埃及金字塔内部，等待扫描结果时玩这个游戏。黑白配色在古墓的昏暗环境中特别醒目。建议增加一个"古墓模式"，让蛇在金字塔的迷宫中穿行，收集象形文字！</div>
+                        <div class="comment-time">2024-03-24 15:20</div>
+                    </div>
+                </div>
+                <!-- 特殊场景：热带雨林 -->
+                <div class="comment">
+                    <img src="91.jpg" alt="用户头像" class="comment-avatar">
+                    <div class="comment-content">
+                        <div class="comment-author">雨林探险家</div>
+                        <div class="comment-text">在亚马逊雨林深处，等待暴雨停歇时玩这个游戏。黑白配色在雨林的潮湿环境中特别清晰。建议增加一个"雨林模式"，让蛇在热带植物间穿行，躲避雨滴！</div>
+                        <div class="comment-time">2024-03-24 16:35</div>
+                    </div>
+                </div>
+                <!-- 特殊语言：化学方程式 -->
+                <div class="comment">
+                    <img src="91.jpg" alt="用户头像" class="comment-avatar">
+                    <div class="comment-content">
+                        <div class="comment-author">化学老师</div>
+                        <div class="comment-text">这个游戏让我想起了化学方程式：<br>
+                        Snake + Food → Longer Snake<br>
+                        Snake + Wall → Game Over<br>
+                        就像化学反应一样，简单而有趣！建议增加一个"化学模式"，让蛇收集不同的元素，形成化合物！</div>
+                        <div class="comment-time">2024-03-24 17:50</div>
+                    </div>
+                </div>
+                <!-- 特殊身份：魔术师 -->
+                <div class="comment">
+                    <img src="91.jpg" alt="用户头像" class="comment-avatar">
+                    <div class="comment-content">
+                        <div class="comment-author">魔术师</div>
+                        <div class="comment-text">在魔术表演的休息时间玩这个游戏。黑白配色让我想起了魔术中的黑白对比。建议增加一个"魔术模式"，让蛇可以瞬间移动，或者穿过自己的身体，就像魔术一样神奇！</div>
+                        <div class="comment-time">2024-03-24 18:15</div>
+                    </div>
+                </div>
+                <!-- 特殊场景：雪山 -->
+                <div class="comment">
+                    <img src="91.jpg" alt="用户头像" class="comment-avatar">
+                    <div class="comment-content">
+                        <div class="comment-author">登山者</div>
+                        <div class="comment-text">在珠穆朗玛峰大本营，等待天气好转时玩这个游戏。黑白配色在雪山的强光下特别清晰。建议增加一个"雪山模式"，让蛇在雪地中留下痕迹，躲避雪崩！</div>
+                        <div class="comment-time">2024-03-24 19:30</div>
+                    </div>
+                </div>
+                <!-- 特殊语言：诗歌 -->
+                <div class="comment">
+                    <img src="91.jpg" alt="用户头像" class="comment-avatar">
+                    <div class="comment-content">
+                        <div class="comment-author">诗人</div>
+                        <div class="comment-text">黑白之间，蛇行如诗<br>
+                        蜿蜒曲折，如行云流水<br>
+                        一食一长，如生命轮回<br>
+                        撞墙而亡，如人生无常<br>
+                        这游戏，竟让我悟出了人生哲理！</div>
+                        <div class="comment-time">2024-03-24 20:45</div>
+                    </div>
+                </div>
+                <!-- 特殊身份：历史学家 -->
+                <div class="comment">
+                    <img src="91.jpg" alt="用户头像" class="comment-avatar">
+                    <div class="comment-content">
+                        <div class="comment-author">历史学者</div>
+                        <div class="comment-text">这个游戏让我想起了古代中国的"贪吃蛇"游戏，最早可以追溯到汉朝。建议增加一个"历史模式"，让蛇在不同的历史场景中穿行，收集历史文物！</div>
+                        <div class="comment-time">2024-03-24 21:20</div>
+                    </div>
+                </div>
+                <!-- 特殊场景：海底 -->
+                <div class="comment">
+                    <img src="91.jpg" alt="用户头像" class="comment-avatar">
+                    <div class="comment-content">
+                        <div class="comment-author">海洋生物学家</div>
+                        <div class="comment-text">在深海潜水器里，观察深海生物时玩这个游戏。黑白配色在深海的黑暗中特别醒目。建议增加一个"深海模式"，让蛇像深海生物一样发光移动，躲避捕食者！</div>
+                        <div class="comment-time">2024-03-24 22:35</div>
+                    </div>
+                </div>
+                <!-- 特殊语言：二进制 -->
+                <div class="comment">
+                    <img src="91.jpg" alt="用户头像" class="comment-avatar">
+                    <div class="comment-content">
+                        <div class="comment-author">计算机科学家</div>
+                        <div class="comment-text">这个游戏可以用二进制表示：<br>
+                        1 = 蛇移动<br>
+                        0 = 蛇停止<br>
+                        就像计算机语言一样简洁！建议增加一个"二进制模式"，让蛇在0和1的世界中穿行！</div>
+                        <div class="comment-time">2024-03-24 23:50</div>
                     </div>
                 </div>
             </div>
@@ -740,6 +1485,24 @@
             if (!gameRunning) {
                 startGame();
             }
+        });
+        
+        // 为评论添加索引以便创建延迟动画效果
+        function initCommentAnimations() {
+            const comments = document.querySelectorAll('.comment');
+            comments.forEach((comment, index) => {
+                comment.style.setProperty('--i', index + 1);
+                
+                // 随机添加新评论高亮效果
+                if (Math.random() > 0.9) {
+                    comment.classList.add('new-comment');
+                }
+            });
+        }
+        
+        // 页面加载完成后初始化评论动画
+        window.addEventListener('load', function() {
+            initCommentAnimations();
         });
         
         // 显示开始游戏提示
